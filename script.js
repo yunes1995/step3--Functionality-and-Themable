@@ -279,22 +279,21 @@ function chosethem() {
     }
 }
 
-/* -----------------------custom them---------------------*/ 
+/* -----------------------custom them---------------------*/
 var color1 = document.querySelector(".color1");
 var color2 = document.querySelector(".color2");
 var body = document.querySelector(".gradient");
 var Allbutton = document.querySelectorAll(".keyboard button");
 
-console.log(Allbutton)
 
 function setGradient() {
-	body.style.background = 
-	"linear-gradient(to right, " 
-	+ color1.value 
-	+ ", " 
-	+ color2.value 
-	+ ")";
-	// css.textContent = body.style.background + ";";
+    body.style.background =
+        "linear-gradient(to right, "
+        + color1.value
+        + ", "
+        + color2.value
+        + ")";
+    // css.textContent = body.style.background + ";";
 }
 
 
@@ -314,97 +313,65 @@ let contentDisplay = document.getElementById("for_dis").innerText;
 let MCButton = document.querySelector("#calOption button");
 let MRButton = document.getElementsByTagName("button")[7];
 
-function addToMemory() {
-    let natijeh = document.getElementById("for_dis").innerHTML;
-    counetrMemory++;
 
-    /*tewsttt*/
+function creatMemory() {
+    let natijeh = document.getElementById("for_dis").innerHTML;
+    let newDIvInMemory = document.createElement("div");
+    let Btn1 = document.createElement("button");
+    let Btn2 = document.createElement("button");
+    let Btn3 = document.createElement("button");
+
+    newDIvInMemory.className = "memoryDataSaved";
+    newDIvInMemory.innerHTML = "<p>" + natijeh + "</p>";
+
+    Btn1.innerText = "MC";
+    Btn2.innerText = "M+";
+    Btn3.innerText = "M-";
+
+    Btn1.setAttribute("onclick", "clearMemory()")
+    Btn2.setAttribute("onclick", "addToMemory()");
+    Btn3.setAttribute("onclick", "Mmines()");
+
+    newDIvInMemory.appendChild(Btn1);
+    newDIvInMemory.appendChild(Btn2);
+    newDIvInMemory.appendChild(Btn3);
+
+    addToMemoryDiv.appendChild(newDIvInMemory);
+    MCButton.removeAttribute("disabled");
+    MRButton.removeAttribute("disabled");
+}
+
+
+
+
+function addToMemory() {
+    counetrMemory++;
     let getDivInMemory = document.querySelectorAll("#memoryFuncID div");
     let tedadkol = getDivInMemory.length;
-    // if(addToMemory == " "){
-    //     counetrMemory = 0;
-    // }
-    /*tewsttt*/
-    // if (tedadkol < 1) {
+
     if (counetrMemory == 0 && MScounter == 0) {
-        let newDIvInMemory = document.createElement("div");
-        let Btn1 = document.createElement("button");
-        let Btn2 = document.createElement("button");
-        let Btn3 = document.createElement("button");
-
-        newDIvInMemory.className = "memoryDataSaved";
-        newDIvInMemory.innerHTML = "<p>" + natijeh + "</p>";
-
-        Btn1.innerText = "MC";
-        Btn2.innerText = "M+";
-        Btn3.innerText = "M-";
-
-
-        Btn1.setAttribute("onclick", "clearMemory()")
-        Btn2.setAttribute("onclick", "addToMemory()");
-        Btn3.setAttribute("onclick", "Mmines()");
-
-
-        newDIvInMemory.appendChild(Btn1);
-        newDIvInMemory.appendChild(Btn2);
-        newDIvInMemory.appendChild(Btn3);
-
-        addToMemoryDiv.appendChild(newDIvInMemory);
-        MCButton.removeAttribute("disabled");
-        MRButton.removeAttribute("disabled");
-
-
-
-    } else if (counetrMemory > 0 && MScounter == 0) {
+        creatMemory();
+    }
+    else if (counetrMemory > 0 && MScounter == 0) {
         let natijeh = + document.getElementById("for_dis").innerText;
         let MplusResult = + document.querySelector("#memoryFuncID p").innerText;
         let sum = natijeh + MplusResult;
 
-        let onlyfortest = document.getElementsByTagName("p");
-        let pcounter = onlyfortest.length;
-
-        // console.log(onlyfortest);
-        if (pcounter <= 2) {
-            showinP = document.getElementsByTagName("p")[1];
-            showinP.innerText = sum;
-        } else if (pcounter > 2) {
-            let showinPNew = document.getElementsByTagName("p")[pcounter - 1];
-            showinPNew.innerText = sum;
-        }
-
-        /*00000000000000000000000000000000000000anjam test 000000000000000000000000000000000000000000*/
-        // let getDivInMemory = document.querySelectorAll("#memoryFuncID div");
-        // let tedadkol = getDivInMemory.length;
-
-    } else if (counetrMemory > 0 && MScounter > 0) {
+        showinP = document.getElementsByTagName("p")[1];
+        showinP.innerText = sum;
+    }
+    else if (counetrMemory > 0 && MScounter > 0) {
 
         let whichp = document.getElementsByTagName("p");
         let pcounternew = whichp.length;
         let lastParagraph = + document.getElementsByTagName("p")[pcounternew - 1].innerText;
         let contentInDis = + document.getElementById("for_dis").innerText;
         let lastsum = lastParagraph + contentInDis;
-
         document.getElementsByTagName("p")[pcounternew - 1].innerText = lastsum;
-
-        console.log(lastsum);
-        console.log(contentInDis);
-        console.log(whichp);
-        // let onlyfortest = document.getElementsByTagName("p");
-        // let pcounter = onlyfortest.length;
-        // let natijehNew = + document.getElementById("for_dis").innerText;
-        // let showinPNew2 = + document.getElementsByTagName("p")[pcounter - 1].innerText;
-
     }
-    // console.log("MScounter = " + MScounter);
-    // console.log("counter memory = " + counetrMemory);
 }
 
 
-// console.log("-----------------------------------")
-
-
-
-// }
 /*************** M- Button ***************/
 function Mmines() {
     if (counetrMemory > 0 && MScounter == 0) {
@@ -424,12 +391,12 @@ function Mmines() {
         }
     } else if (counetrMemory > 0 && MScounter > 0) {
         let whichp = document.getElementsByTagName("p");
-            let pcounternew = whichp.length;
-            let lastParagraph = + document.getElementsByTagName("p")[pcounternew-1].innerText;
-            let contentInDis = + document.getElementById("for_dis").innerText;
-            let lastsum = lastParagraph - contentInDis ; 
+        let pcounternew = whichp.length;
+        let lastParagraph = + document.getElementsByTagName("p")[pcounternew - 1].innerText;
+        let contentInDis = + document.getElementById("for_dis").innerText;
+        let lastsum = lastParagraph - contentInDis;
 
-            document.getElementsByTagName("p")[pcounternew-1].innerText = lastsum;
+        document.getElementsByTagName("p")[pcounternew - 1].innerText = lastsum;
 
     }
 }
@@ -456,32 +423,5 @@ function MRbuttonFunc() {
 
 const MSButtonFunc = () => {
     MScounter++;
-    let natijeh = document.getElementById("for_dis").innerHTML;
-    let newDIvInMemory = document.createElement("div");
-    let Btn1 = document.createElement("button");
-    let Btn2 = document.createElement("button");
-    let Btn3 = document.createElement("button");
-
-    newDIvInMemory.className = "memoryDataSaved";
-    newDIvInMemory.innerHTML = "<p>" + natijeh + "</p>";
-
-    Btn1.innerText = "MC";
-    Btn2.innerText = "M+";
-    Btn3.innerText = "M-";
-
-
-    Btn1.setAttribute("onclick", "clearMemory()")
-    Btn2.setAttribute("onclick", "addToMemory()");
-    Btn3.setAttribute("onclick", "Mmines()");
-
-
-    newDIvInMemory.appendChild(Btn1);
-    newDIvInMemory.appendChild(Btn2);
-    newDIvInMemory.appendChild(Btn3);
-
-    addToMemoryDiv.appendChild(newDIvInMemory);
-    MCButton.removeAttribute("disabled");
-    MRButton.removeAttribute("disabled");
-    // addToMemory();
-    // console.log("im ok")
+    creatMemory();
 }
