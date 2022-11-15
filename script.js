@@ -322,14 +322,27 @@ function creatMemory() {
     let Btn3 = document.createElement("button");
 
     newDIvInMemory.className = "memoryDataSaved";
-    newDIvInMemory.innerHTML = "<p>" + natijeh + "</p>";
+    newDIvInMemory.innerHTML = "<p class='newtest'>" + natijeh + "</p>";
 
     Btn1.innerText = "MC";
     Btn2.innerText = "M+";
     Btn3.innerText = "M-";
 
+    Btn2.addEventListener("click" , addToMemoryplus = (event) =>{
+        console.log(event);
+        const target = event.target;
+        // const variable = + target.parentNode.querySelector(".newtest"); 
+        let contentDisplay = + document.getElementById("for_dis").innerText;
+       target.parentNode.querySelector(".newtest").innerHTML = contentDisplay + parseFloat(target.parentNode.querySelector(".newtest").innerHTML);
+    });
+
+    /* tttttttttttt*/
+    Btn2.setAttribute("class", MScounter);
+    /* tttttttttttt*/
+
+
     Btn1.setAttribute("onclick", "clearMemory()")
-    Btn2.setAttribute("onclick", "addToMemory()");
+    // Btn2.setAttribute("onclick", "addToMemoryplus()");
     Btn3.setAttribute("onclick", "Mmines()");
 
     newDIvInMemory.appendChild(Btn1);
@@ -343,6 +356,7 @@ function creatMemory() {
 
 
 
+/*--------------------------- M+--------------------*/
 
 function addToMemory() {
     counetrMemory++;
@@ -370,6 +384,40 @@ function addToMemory() {
         document.getElementsByTagName("p")[pcounternew - 1].innerText = lastsum;
     }
 }
+/*-------------------- M+ in new div -------------------*/
+let whichnutton = 7;
+let chosep = 1 ; 
+
+// function addToMemoryplus(event) {
+//     const target = event.target;
+//     const variable = +  target.parentNode.querySelector(".newtest"); 
+
+//     let contentDisplay = + document.getElementById("for_dis").innerText;
+//     variable.innerHTML += contentDisplay;
+// //     let addtowhich = document.getElementsByTagName("button")[whichnutton];
+// //     let pForChange = document.getElementsByTagName("p")[chosep];
+// //     let pForChange2 = + document.getElementsByTagName("p")[chosep].innerText;
+// //     //let pForChange = document.getElementsByTagsName("p")[2];
+    
+// //     let newsum = contentDisplay + pForChange2;
+// //     pForChange.innerText= newsum
+// //     if (whichnutton == 10) {
+       
+// // // console.log("true")
+// //     }
+// //     // else if (whichnutton == 10) {
+// //     //     // pForChange3.innerText = newsum;
+// //     //     // console.log("true")
+// //     // }
+    
+// //     // console.log(pForChange)
+// //     // console.log(newsum)
+// //     console.log(addtowhich)
+    
+
+//     // console.log(addtowhich)
+
+// }
 
 
 /*************** M- Button ***************/
@@ -423,5 +471,7 @@ function MRbuttonFunc() {
 
 const MSButtonFunc = () => {
     MScounter++;
+    chosep++;
+    whichnutton += 3;
     creatMemory();
 }
