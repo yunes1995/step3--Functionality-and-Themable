@@ -6,28 +6,33 @@ function press_button(value) {
     const x = document.getElementById("for_dis").innerHTML;
     counterfunc++;
 
-    // console.log(counterfunc);
-
     let testfor = x.length;
-    // console.log("lenght =" + " " + testfor);
-    // console.log("x barabar ast ba" + " " + x);
-    // console.log("value = " + value);
-    // document.getElementById("for_dis").innerText = "";
 
-    /* new test*/
-    // let arr = [0,1,2,3,4,5,6,7,8,9];
     if (x == 0 && value == "+") {
         document.getElementById("for_dis").innerHTML = 0;
     }
 
-
-    /* new test*/
     if (x == 0) {
         document.getElementById("for_dis").innerHTML = value;
     } else {
         document.getElementById("for_dis").innerHTML += value;
     }
+    console.log(flag)
 }
+/*------------------------ + - /  * *----------------------*/ 
+const flag = true;
+const getBtn =  document.getElementById("divisionBtn");
+getBtn.addEventListener("click" , testfunc);
+function testfunc(){
+    console.log(divisionBtn.value);
+    if(flag == false){
+        return
+    }else{
+        press_button(divisionBtn.value);
+    }
+}
+
+
 
 /* ----------------c button---------------*/
 function clear() {
@@ -42,10 +47,7 @@ function mathic() {
 }
 /*--------------mosavi button-----------*/
 function mosavi() {
-    // counterfunc++;
-    // console.log(memoryDis)
-    // const x = document.getElementById("for_dis").innerHTML;
-    //  x = eval( document.getElementById("for_dis").innerHTML);
+
     let natijeh = eval(document.getElementById("for_dis").innerHTML);
     let soal = document.getElementById("for_dis").innerHTML;
     document.getElementById("for_dis").innerHTML = natijeh;
@@ -72,6 +74,8 @@ function mosavi() {
 
 
 }
+
+
 
 
 /*----------------hazv konandeh yeki -----------*/
@@ -327,18 +331,14 @@ function creatMemory() {
     Btn1.innerText = "MC";
     Btn2.innerText = "M+";
     Btn3.innerText = "M-";
-
+    /*-------------- M+ button-------------- */
     Btn2.addEventListener("click" , addToMemoryplus = (event) =>{
         console.log(event);
-        const target = event.target;
-        // const variable = + target.parentNode.querySelector(".newtest"); 
+        const target = event.target; 
         let contentDisplay = + document.getElementById("for_dis").innerText;
        target.parentNode.querySelector(".newtest").innerHTML = contentDisplay + parseFloat(target.parentNode.querySelector(".newtest").innerHTML);
     });
 
-    /* tttttttttttt*/
-    Btn2.setAttribute("class", MScounter);
-    /* tttttttttttt*/
 
 
     Btn1.setAttribute("onclick", "clearMemory()")
@@ -387,37 +387,6 @@ function addToMemory() {
 /*-------------------- M+ in new div -------------------*/
 let whichnutton = 7;
 let chosep = 1 ; 
-
-// function addToMemoryplus(event) {
-//     const target = event.target;
-//     const variable = +  target.parentNode.querySelector(".newtest"); 
-
-//     let contentDisplay = + document.getElementById("for_dis").innerText;
-//     variable.innerHTML += contentDisplay;
-// //     let addtowhich = document.getElementsByTagName("button")[whichnutton];
-// //     let pForChange = document.getElementsByTagName("p")[chosep];
-// //     let pForChange2 = + document.getElementsByTagName("p")[chosep].innerText;
-// //     //let pForChange = document.getElementsByTagsName("p")[2];
-    
-// //     let newsum = contentDisplay + pForChange2;
-// //     pForChange.innerText= newsum
-// //     if (whichnutton == 10) {
-       
-// // // console.log("true")
-// //     }
-// //     // else if (whichnutton == 10) {
-// //     //     // pForChange3.innerText = newsum;
-// //     //     // console.log("true")
-// //     // }
-    
-// //     // console.log(pForChange)
-// //     // console.log(newsum)
-// //     console.log(addtowhich)
-    
-
-//     // console.log(addtowhich)
-
-// }
 
 
 /*************** M- Button ***************/
