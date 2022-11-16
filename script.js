@@ -19,6 +19,32 @@ function press_button(value) {
     }
     flag = true;
 }
+
+/*--------------mosavi button-----------*/
+let mosavivariable = 0;
+function mosavi() {
+
+  
+    let natijeh = eval(document.getElementById("for_dis").innerHTML);
+    let soal = document.getElementById("for_dis").innerHTML;
+    document.getElementById("for_dis").innerHTML = natijeh;
+    let memoryDis = document.getElementById("historyFuncID");
+   
+    /* add here/* add here/*add here/* add here/* add here/* add here*/
+    if(mosavivariable > 0){
+    let newHistory = document.createElement("div");
+    newHistory.className = "contetnthistory";
+    newHistory.innerHTML = "<p>" + soal + "=" + natijeh + "</p>";
+    memoryDis.appendChild(newHistory);
+    /* add here/* add here/*add here/* add here/* add here/* add here*/
+    console.log(mosavivariable)
+}
+
+}
+
+
+
+
 /*------------------------ + - /  * *----------------------*/ 
 let flag = false;
 
@@ -29,6 +55,7 @@ getBtndivision.addEventListener("click" , () => {
     }else{
         press_button(divisionBtn.value);
         flag = false;
+        mosavivariable++;
     }
 });
 
@@ -39,6 +66,7 @@ getBtnMultiplay.addEventListener("click" , () =>{
     }else{
         press_button(multiplayBtn.value);
         flag = false;
+        mosavivariable++;
     }
 });
 
@@ -49,6 +77,7 @@ getMinesBtn.addEventListener("click" , () => {
     }else{
         press_button(minesBtn.value);
         flag = false;
+        mosavivariable++;
     }
 })
 
@@ -59,6 +88,7 @@ getSubBtn.addEventListener("click" , () => {
     }else{
         press_button(subBtn.value);
         flag = false;
+        mosavivariable++;
     }
 } )
 
@@ -81,36 +111,6 @@ document.querySelector(".grid3").addEventListener("click", clear);
 function mathic() {
     alert("hi");
 }
-/*--------------mosavi button-----------*/
-function mosavi() {
-
-    let natijeh = eval(document.getElementById("for_dis").innerHTML);
-    let soal = document.getElementById("for_dis").innerHTML;
-    document.getElementById("for_dis").innerHTML = natijeh;
-
-    let memoryDis = document.getElementById("historyFuncID");
-    let newHistory = document.createElement("div");
-    newHistory.className = "contetnthistory";
-    newHistory.innerHTML = "<p>" + soal + "=" + natijeh + "</p>";
-    // newHistory.style.order = counterfunc;
-    memoryDis.appendChild(newHistory);
-
-    // let test11 = document.querySelectorAll(".contetnthistory p");
-    // if(newHistory.length > 4){
-    //     test11.style. = 10% ;
-    // }
-
-    // console.log(memoryDis);
-
-    // let newDiv = document.getElementsByClassName("contetnthistory");
-    // console.log(newDiv)
-    // let newP = document.createElement("p");
-    // // newP = "hello";
-    // newDiv.appendChild(newP);
-
-
-}
-
 
 
 
