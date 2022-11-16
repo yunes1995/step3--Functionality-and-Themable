@@ -135,27 +135,17 @@ function deleter() {
 
 /****************clear history ********************** */
 function cleanerHistory() {
-    document.getElementById("historyFuncID").innerHTML = " ";
+    if(memoryFlag == false){
+        document.getElementById("historyFuncID").innerHTML = " ";
+    }
+    else if (memoryFlag == true){
+        document.getElementById("memoryFuncID").innerHTML = " ";
+    }
 }
 
 /* ---------------part memory and history----------------*/
 
-// /*hover show background and add button */ 
-// let showHover = document.getElementById("memoryDataSavedID");
-// let BtnshowWithHover = document.getElementById("ButtonsID");
-
-// showHover.addEventListener("mouseenter" , addHover);
-// function addHover(){
-//     showHover.style.backgroundColor = "silver";
-//     BtnshowWithHover.classList.remove("displayshow");
-// }
-
-// showHover.addEventListener("mouseleave", removeHover)
-// function removeHover(){
-//     showHover.style.backgroundColor = "rgba(192, 192, 192, 0)";
-//     BtnshowWithHover.classList.add("displayshow");
-// }
-// /*hover show background and add button */ 
+let memoryFlag = false; 
 function memoryBTN() {
     /* red line in below*/
     let history = document.getElementById("historyBtnID");
@@ -170,9 +160,8 @@ function memoryBTN() {
     changeDisplayHis.classList.add("displayshow");
     changeDisplayMem.classList.remove("displayshow");
     /* swich between memory and history display */
-
-
-
+    memoryFlag = true;
+    
 }
 
 function historyBTN() {
@@ -189,7 +178,7 @@ function historyBTN() {
     changeDisplayHis.classList.remove("displayshow");
     changeDisplayMem.classList.add("displayshow");
     /* swich between memory and history display */
-
+    memoryFlag = false;
 }
 
 
