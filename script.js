@@ -24,35 +24,35 @@ function press_button(value) {
 let mosavivariable = 0;
 function mosavi() {
 
-  
+
     let natijeh = eval(document.getElementById("for_dis").innerHTML);
     let soal = document.getElementById("for_dis").innerHTML;
     document.getElementById("for_dis").innerHTML = natijeh;
     let memoryDis = document.getElementById("historyFuncID");
-   
+
     /* add here/* add here/*add here/* add here/* add here/* add here*/
-    if(mosavivariable > 0){
-    let newHistory = document.createElement("div");
-    newHistory.className = "contetnthistory";
-    newHistory.innerHTML = "<p>" + soal + "=" + natijeh + "</p>";
-    memoryDis.appendChild(newHistory);
-    /* add here/* add here/*add here/* add here/* add here/* add here*/
-    console.log(mosavivariable)
+    if (mosavivariable > 0) {
+        let newHistory = document.createElement("div");
+        newHistory.className = "contetnthistory";
+        newHistory.innerHTML = "<p>" + soal + "=" + natijeh + "</p>";
+        memoryDis.appendChild(newHistory);
+        /* add here/* add here/*add here/* add here/* add here/* add here*/
+        console.log(mosavivariable)
+    }
+
 }
 
-}
 
 
 
-
-/*------------------------ + - /  * *----------------------*/ 
+/*------------------------ + - /  * *----------------------*/
 let flag = false;
 
-const getBtndivision =  document.getElementById("divisionBtn");
-getBtndivision.addEventListener("click" , () => {
-    if(flag == false){
+const getBtndivision = document.getElementById("divisionBtn");
+getBtndivision.addEventListener("click", () => {
+    if (flag == false) {
         return;
-    }else{
+    } else {
         press_button(divisionBtn.value);
         flag = false;
         mosavivariable++;
@@ -60,10 +60,10 @@ getBtndivision.addEventListener("click" , () => {
 });
 
 const getBtnMultiplay = document.getElementById("multiplayBtn");
-getBtnMultiplay.addEventListener("click" , () =>{
-    if(flag == false){
+getBtnMultiplay.addEventListener("click", () => {
+    if (flag == false) {
         return;
-    }else{
+    } else {
         press_button(multiplayBtn.value);
         flag = false;
         mosavivariable++;
@@ -71,10 +71,10 @@ getBtnMultiplay.addEventListener("click" , () =>{
 });
 
 const getMinesBtn = document.getElementById("minesBtn");
-getMinesBtn.addEventListener("click" , () => {
-    if(flag == false){
+getMinesBtn.addEventListener("click", () => {
+    if (flag == false) {
         return;
-    }else{
+    } else {
         press_button(minesBtn.value);
         flag = false;
         mosavivariable++;
@@ -82,15 +82,15 @@ getMinesBtn.addEventListener("click" , () => {
 })
 
 const getSubBtn = document.getElementById("subBtn");
-getSubBtn.addEventListener("click" , () => {
-    if(flag == false){
+getSubBtn.addEventListener("click", () => {
+    if (flag == false) {
         return;
-    }else{
+    } else {
         press_button(subBtn.value);
         flag = false;
         mosavivariable++;
     }
-} )
+})
 
 
 
@@ -135,17 +135,17 @@ function deleter() {
 
 /****************clear history ********************** */
 function cleanerHistory() {
-    if(memoryFlag == false){
+    if (memoryFlag == false) {
         document.getElementById("historyFuncID").innerHTML = " ";
     }
-    else if (memoryFlag == true){
+    else if (memoryFlag == true) {
         document.getElementById("memoryFuncID").innerHTML = " ";
     }
 }
 
 /* ---------------part memory and history----------------*/
 
-let memoryFlag = false; 
+let memoryFlag = false;
 function memoryBTN() {
     /* red line in below*/
     let history = document.getElementById("historyBtnID");
@@ -161,7 +161,7 @@ function memoryBTN() {
     changeDisplayMem.classList.remove("displayshow");
     /* swich between memory and history display */
     memoryFlag = true;
-    
+
 }
 
 function historyBTN() {
@@ -358,17 +358,25 @@ function creatMemory() {
     Btn2.innerText = "M+";
     Btn3.innerText = "M-";
     /*-------------- M+ button-------------- */
-    Btn2.addEventListener("click" , addToMemoryplus = (event) =>{
-        console.log(event);
-        const target = event.target; 
+    Btn2.addEventListener("click", addToMemoryplus = (event) => {
+        const target = event.target;
         let contentDisplay = + document.getElementById("for_dis").innerText;
-       target.parentNode.querySelector(".newtest").innerHTML = contentDisplay + parseFloat(target.parentNode.querySelector(".newtest").innerHTML);
+        target.parentNode.querySelector(".newtest").innerHTML = contentDisplay + parseFloat(target.parentNode.querySelector(".newtest").innerHTML);
     });
 
+    /*-------------MC button------------------*/
+    Btn1.addEventListener("click" ,MCremover = (event) =>{
+        const target = event.target;
+         let newvar = target.parentNode.remove();
+         console.log(newvar)
+         MCcounter--;
+         MCcounterDisable--;
+         if (MCcounterDisable == 0) {
+            MCButton.setAttribute("disabled", true);
+            MRButton.setAttribute("disabled", true);
+        }
+    })
 
-
-    Btn1.setAttribute("onclick", "clearMemory()")
-    // Btn2.setAttribute("onclick", "addToMemoryplus()");
     Btn3.setAttribute("onclick", "Mmines()");
 
     newDIvInMemory.appendChild(Btn1);
@@ -412,7 +420,7 @@ function addToMemory() {
 }
 /*-------------------- M+ in new div -------------------*/
 let whichnutton = 7;
-let chosep = 1 ; 
+let chosep = 1;
 
 
 /*************** M- Button ***************/
@@ -444,16 +452,21 @@ function Mmines() {
     }
 }
 /************************* MC Button ********************/
-function clearMemory() {
-    // alert("hi");
-    // document.getElementById("memoryFuncID").innerHTML = " ";
-    let getDivInMemory = document.querySelector("#memoryFuncID div");
-    getDivInMemory.remove();
-    counetrMemory = -1;
-    MCButton.setAttribute("disabled", true);
-    MRButton.setAttribute("disabled", true);
+let MCcounter = -1;
+let MCcounterDisable = 0;
 
-    // document.getElementById("memoryFuncID").innerHTML = "its ok ";
+function clearMemory() {
+    let getDivInMemory = document.querySelectorAll("#memoryFuncID div")[MCcounter];
+    getDivInMemory.remove();
+    MCcounter--;
+    MCcounterDisable--;
+    counetrMemory = -1;
+    
+    console.log(MCcounterDisable)
+    if (MCcounterDisable == 0) {
+        MCButton.setAttribute("disabled", true);
+        MRButton.setAttribute("disabled", true);
+    }
 }
 
 /************************* MR button *********************/
@@ -467,6 +480,8 @@ function MRbuttonFunc() {
 const MSButtonFunc = () => {
     MScounter++;
     chosep++;
-    whichnutton += 3;
+    // whichnutton += 3;
+    MCcounter++;
+    MCcounterDisable++;
     creatMemory();
 }
