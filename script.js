@@ -17,20 +17,56 @@ function press_button(value) {
     } else {
         document.getElementById("for_dis").innerHTML += value;
     }
-    console.log(flag)
+    flag = true;
 }
 /*------------------------ + - /  * *----------------------*/ 
-const flag = true;
-const getBtn =  document.getElementById("divisionBtn");
-getBtn.addEventListener("click" , testfunc);
-function testfunc(){
-    console.log(divisionBtn.value);
+let flag = false;
+
+const getBtndivision =  document.getElementById("divisionBtn");
+getBtndivision.addEventListener("click" , () => {
     if(flag == false){
-        return
+        return;
     }else{
         press_button(divisionBtn.value);
+        flag = false;
     }
-}
+});
+
+const getBtnMultiplay = document.getElementById("multiplayBtn");
+getBtnMultiplay.addEventListener("click" , () =>{
+    if(flag == false){
+        return;
+    }else{
+        press_button(multiplayBtn.value);
+        flag = false;
+    }
+});
+
+const getMinesBtn = document.getElementById("minesBtn");
+getMinesBtn.addEventListener("click" , () => {
+    if(flag == false){
+        return;
+    }else{
+        press_button(minesBtn.value);
+        flag = false;
+    }
+})
+
+const getSubBtn = document.getElementById("subBtn");
+getSubBtn.addEventListener("click" , () => {
+    if(flag == false){
+        return;
+    }else{
+        press_button(subBtn.value);
+        flag = false;
+    }
+} )
+
+
+
+
+
+
 
 
 
@@ -91,6 +127,7 @@ function deleter() {
         document.getElementById("for_dis").innerHTML = 0;
 
     }
+    flag = true;
 
 
 }
@@ -179,7 +216,7 @@ function cebutton() {
         }
 
     }
-
+    flag = true;
 }
 /*---------------------darsad button------------- */
 
