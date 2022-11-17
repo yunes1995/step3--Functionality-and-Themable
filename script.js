@@ -1,27 +1,63 @@
 
 /*----------------- 1 - 9 button -------------*/
 let counterfunc = 0;
+let flagNewNumber = false;
 
 function press_button(value) {
-    const x = document.getElementById("for_dis").innerHTML;
-    counterfunc++;
+    if (flagNewNumber == false) {
+        showNumberToDis();
+    }
+    /*raf bug */ /*raf bug */ /*raf bug */ /*raf bug */ /*raf bug */
 
-    let testfor = x.length;
+    if (flagNewNumber == true) {
 
-    if (x == 0 && value == "+") {
-        document.getElementById("for_dis").innerHTML = 0;
+        if (value == "/" || value == "*" || value == "+" || value == "-") {
+            showNumberToDis();
+            flagNewNumber = false;
+        }
+        else{
+            document.getElementById("for_dis").innerHTML = 0;
+            showNumberToDis();
+            flagNewNumber = false;
+        }
+        // if (flag == true) {
+        //     showNumberToDis();
+        //     // flagNewNumber = false;
+        // } else {
+
+        // }
+        // console.log(newdisplay);
+        // press_button();
+
+        // flagNewNumber = false;
     }
 
-    if (x == 0) {
-        document.getElementById("for_dis").innerHTML = value;
-    } else {
-        document.getElementById("for_dis").innerHTML += value;
+    function showNumberToDis() {
+        let x = document.getElementById("for_dis").innerHTML;
+        counterfunc++;
+
+        // let testfor = x.length;
+
+        if (x == 0 && value == "+") {
+            document.getElementById("for_dis").innerHTML = 0;
+        }
+
+        if (x == 0) {
+            document.getElementById("for_dis").innerHTML = value;
+        } else {
+            document.getElementById("for_dis").innerHTML += value;
+        }
+        flag = true;
     }
-    flag = true;
+
+    /*raf bug */ /*raf bug */ /*raf bug */ /*raf bug */ /*raf bug */
+
+
 }
 
 /*--------------mosavi button-----------*/
 let mosavivariable = 0;
+
 function mosavi() {
 
 
@@ -30,18 +66,27 @@ function mosavi() {
     document.getElementById("for_dis").innerHTML = natijeh;
     let memoryDis = document.getElementById("historyFuncID");
 
-    /* add here/* add here/*add here/* add here/* add here/* add here*/
+    // show and add to history
     if (mosavivariable > 0) {
         let newHistory = document.createElement("div");
         newHistory.className = "contetnthistory";
         newHistory.innerHTML = "<p>" + soal + "=" + natijeh + "</p>";
         memoryDis.appendChild(newHistory);
-        /* add here/* add here/*add here/* add here/* add here/* add here*/
-        console.log(mosavivariable)
+        mosavivariable = 0;
+        /*test*//*test*//*test*//*test*//*test*//*test*//*test*/
+        flagNewNumber = true;
+        // flag = false;
+        // variablenewnum++;
+        /*test*//*test*//*test*//*test*//*test*//*test*//*test*/
     }
 
 }
 
+function testfunction() {
+    // console.log("flagNewNumber", flagNewNumber)
+    // console.log("flag", flag)
+    console.log(variablenewnum2)
+}
 
 
 
@@ -365,13 +410,13 @@ function creatMemory() {
     });
 
     /*-------------MC button------------------*/
-    Btn1.addEventListener("click" ,MCremover = (event) =>{
+    Btn1.addEventListener("click", MCremover = (event) => {
         const target = event.target;
-         let newvar = target.parentNode.remove();
-         console.log(newvar)
-         MCcounter--;
-         MCcounterDisable--;
-         if (MCcounterDisable == 0) {
+        let newvar = target.parentNode.remove();
+        console.log(newvar)
+        MCcounter--;
+        MCcounterDisable--;
+        if (MCcounterDisable == 0) {
             MCButton.setAttribute("disabled", true);
             MRButton.setAttribute("disabled", true);
         }
@@ -461,7 +506,7 @@ function clearMemory() {
     MCcounter--;
     MCcounterDisable--;
     counetrMemory = -1;
-    
+
     console.log(MCcounterDisable)
     if (MCcounterDisable == 0) {
         MCButton.setAttribute("disabled", true);
