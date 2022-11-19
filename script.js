@@ -4,39 +4,28 @@ let counterfunc = 0;
 let flagNewNumber = false;
 
 function press_button(value) {
+
     if (flagNewNumber == false) {
         showNumberToDis();
     }
-    /*raf bug */ /*raf bug */ /*raf bug */ /*raf bug */ /*raf bug */
 
     if (flagNewNumber == true) {
-
+        document.getElementById("showBeforResult").innerText = " ";
         if (value == "/" || value == "*" || value == "+" || value == "-") {
             showNumberToDis();
             flagNewNumber = false;
         }
-        else{
+        else {
             document.getElementById("for_dis").innerHTML = 0;
             showNumberToDis();
             flagNewNumber = false;
         }
-        // if (flag == true) {
-        //     showNumberToDis();
-        //     // flagNewNumber = false;
-        // } else {
-
-        // }
-        // console.log(newdisplay);
-        // press_button();
-
-        // flagNewNumber = false;
     }
-
     function showNumberToDis() {
+
+        document.getElementById("showBeforResult").innerText
         let x = document.getElementById("for_dis").innerHTML;
         counterfunc++;
-
-        // let testfor = x.length;
 
         if (x == 0 && value == "+") {
             document.getElementById("for_dis").innerHTML = 0;
@@ -49,10 +38,6 @@ function press_button(value) {
         }
         flag = true;
     }
-
-    /*raf bug */ /*raf bug */ /*raf bug */ /*raf bug */ /*raf bug */
-
-
 }
 
 /*--------------mosavi button-----------*/
@@ -60,11 +45,16 @@ let mosavivariable = 0;
 
 function mosavi() {
 
-
     let natijeh = eval(document.getElementById("for_dis").innerHTML);
     let soal = document.getElementById("for_dis").innerHTML;
-    document.getElementById("for_dis").innerHTML = natijeh;
     let memoryDis = document.getElementById("historyFuncID");
+    if (flagNewNumber == true) {
+        return
+    } else {
+        document.getElementById("for_dis").innerHTML = natijeh;
+        document.getElementById("showBeforResult").innerHTML = soal + " " + "=";
+    }
+
 
     // show and add to history
     if (mosavivariable > 0) {
@@ -73,19 +63,15 @@ function mosavi() {
         newHistory.innerHTML = "<p>" + soal + "=" + natijeh + "</p>";
         memoryDis.appendChild(newHistory);
         mosavivariable = 0;
-        /*test*//*test*//*test*//*test*//*test*//*test*//*test*/
         flagNewNumber = true;
-        // flag = false;
-        // variablenewnum++;
-        /*test*//*test*//*test*//*test*//*test*//*test*//*test*/
     }
+
 
 }
 
 function testfunction() {
-    // console.log("flagNewNumber", flagNewNumber)
-    // console.log("flag", flag)
-    console.log(variablenewnum2)
+    console.log(flagNewNumber)
+
 }
 
 
@@ -137,19 +123,13 @@ getSubBtn.addEventListener("click", () => {
     }
 })
 
-
-
-
-
-
-
-
-
 /* ----------------c button---------------*/
+document.querySelector(".grid3").addEventListener("click", clear);
 function clear() {
     document.getElementById("for_dis").innerHTML = "0";
+    document.getElementById("showBeforResult").innerText = " ";
 }
-document.querySelector(".grid3").addEventListener("click", clear);
+
 
 /* ------------اعمال ریاضی----------------*/
 
@@ -171,6 +151,9 @@ function deleter() {
     if (discontent == "-") {
         document.getElementById("for_dis").innerHTML = 0;
 
+    }
+    if (flagNewNumber == true) {
+        document.getElementById("showBeforResult").innerText = " ";
     }
     flag = true;
 
