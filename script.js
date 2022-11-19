@@ -2,7 +2,8 @@
 /*----------------- 1 - 9 button -------------*/
 let counterfunc = 0;
 let flagNewNumber = false;
-
+let showtextOfHistory = false;
+let showtextOfMemory = false;
 function press_button(value) {
 
     if (flagNewNumber == false) {
@@ -64,13 +65,18 @@ function mosavi() {
         memoryDis.appendChild(newHistory);
         mosavivariable = 0;
         flagNewNumber = true;
+        // remove the (There's no history yet) text
+        showtextOfHistory = true;
+        let gettextOfHistory = document.getElementById("textOfHistory");
+        gettextOfHistory.classList.add("hide");
+
     }
 
 
 }
 
 function testfunction() {
-    console.log(flagNewNumber)
+    // console.log(showtextOfMemory)
 
 }
 
@@ -165,9 +171,15 @@ function deleter() {
 function cleanerHistory() {
     if (memoryFlag == false) {
         document.getElementById("historyFuncID").innerHTML = " ";
+        showtextOfHistory = false;
+        let gettextOfHistory = document.getElementById("textOfHistory");
+        gettextOfHistory.classList.remove("hide");
     }
     else if (memoryFlag == true) {
         document.getElementById("memoryFuncID").innerHTML = " ";
+        showtextOfMemory = false;
+        let gettextOfHistory = document.getElementById("textOfMemory");
+        gettextOfHistory.classList.remove("hide");
     }
 }
 
@@ -189,6 +201,16 @@ function memoryBTN() {
     changeDisplayMem.classList.remove("displayshow");
     /* swich between memory and history display */
     memoryFlag = true;
+    // history hidder 
+    let gettextOfHistory = document.getElementById("textOfHistory");
+    gettextOfHistory.classList.add("hide");
+    // memory hidder 
+    if (showtextOfMemory == true) {
+        return
+    } else {
+        let gettextOfMemory = document.getElementById("textOfMemory");
+        gettextOfMemory.classList.remove("hide")
+    }
 
 }
 
@@ -207,6 +229,16 @@ function historyBTN() {
     changeDisplayMem.classList.add("displayshow");
     /* swich between memory and history display */
     memoryFlag = false;
+    // show or hide text (There's no history yet)
+    let gettextOfMemory = document.getElementById("textOfMemory");
+    gettextOfMemory.classList.add("hide")
+    if (showtextOfHistory == true) {
+        return
+    }
+    else {
+        let gettextOfHistory = document.getElementById("textOfHistory");
+        gettextOfHistory.classList.remove("hide");
+    }
 }
 
 
@@ -215,9 +247,7 @@ function historyBTN() {
 /*-------------------ce button----------- */
 
 function cebutton() {
-
-    // let str = document.getElementById("for_dis").innerHTML.slice(0 , -1);
-    // document.getElementById("for_dis").innerHTML = str;
+    
     let v = document.getElementById("for_dis").innerHTML.split('');
     let ar = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -390,6 +420,7 @@ function creatMemory() {
         const target = event.target;
         let contentDisplay = + document.getElementById("for_dis").innerText;
         target.parentNode.querySelector(".newtest").innerHTML = contentDisplay + parseFloat(target.parentNode.querySelector(".newtest").innerHTML);
+
     });
 
     /*-------------MC button------------------*/
@@ -433,7 +464,7 @@ function addToMemory() {
         let MplusResult = + document.querySelector("#memoryFuncID p").innerText;
         let sum = natijeh + MplusResult;
 
-        showinP = document.getElementsByTagName("p")[1];
+        showinP = document.getElementsByTagName("p")[2];
         showinP.innerText = sum;
     }
     else if (counetrMemory > 0 && MScounter > 0) {
@@ -445,6 +476,9 @@ function addToMemory() {
         let lastsum = lastParagraph + contentInDis;
         document.getElementsByTagName("p")[pcounternew - 1].innerText = lastsum;
     }
+    let gettextOfMemory = document.getElementById("textOfMemory");
+    gettextOfMemory.classList.add("hide")
+    showtextOfMemory = true;
 }
 /*-------------------- M+ in new div -------------------*/
 let whichnutton = 7;
@@ -489,11 +523,15 @@ function clearMemory() {
     MCcounter--;
     MCcounterDisable--;
     counetrMemory = -1;
-
-    console.log(MCcounterDisable)
     if (MCcounterDisable == 0) {
         MCButton.setAttribute("disabled", true);
         MRButton.setAttribute("disabled", true);
+        if (memoryFlag == false) {
+            return
+        } else {
+            let gettextOfMemory = document.getElementById("textOfMemory");
+            gettextOfMemory.classList.remove("hide")
+        }
     }
 }
 
@@ -512,4 +550,8 @@ const MSButtonFunc = () => {
     MCcounter++;
     MCcounterDisable++;
     creatMemory();
+    let gettextOfMemory = document.getElementById("textOfMemory");
+    gettextOfMemory.classList.add("hide")
+    showtextOfMemory = true;
 }
+
