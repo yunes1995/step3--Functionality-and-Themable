@@ -4,22 +4,35 @@ let counterfunc = 0;
 let flagNewNumber = false;
 let showtextOfHistory = false;
 let showtextOfMemory = false;
+let firsDot = 0;
+
+
 function press_button(value) {
 
-    if (flagNewNumber == false) {
-        showNumberToDis();
+    let displayy = getDisplayValue();
+    console.log("dispay value = " + displayy)
+    if (displayy == "0.") {
+        document.getElementById("for_dis").innerText = "0." + value;
+        flag = true;
+        console.log("ta inja omadam")
     }
+    else {
 
-    if (flagNewNumber == true) {
-        document.getElementById("showBeforResult").innerText = " ";
-        if (value == "/" || value == "*" || value == "+" || value == "-") {
+        if (flagNewNumber == false) {
             showNumberToDis();
-            flagNewNumber = false;
         }
-        else {
-            document.getElementById("for_dis").innerHTML = 0;
-            showNumberToDis();
-            flagNewNumber = false;
+
+        if (flagNewNumber == true) {
+            document.getElementById("showBeforResult").innerText = " ";
+            if (value == "/" || value == "*" || value == "+" || value == "-") {
+                showNumberToDis();
+                flagNewNumber = false;
+            }
+            else {
+                document.getElementById("for_dis").innerHTML = 0;
+                showNumberToDis();
+                flagNewNumber = false;
+            }
         }
     }
     function showNumberToDis() {
@@ -39,7 +52,37 @@ function press_button(value) {
         }
         flag = true;
     }
+    firsDot++;
 }
+function getDisplayValue() {
+    let display = document.getElementById("for_dis").innerText;
+    return display;
+}
+
+/*-----------dot button---------------*/
+let getDotBtn = document.getElementById("dotBtn");
+getDotBtn.addEventListener("click", () => {
+
+    if (flag == false && firsDot == 0) {
+        console.log("first ")
+        document.getElementById("for_dis").innerText = "0.";
+        flag = false
+    }
+    if (flag == false && firsDot > 0) {
+        console.log("second")
+        return
+    }
+    if (flag == true && firsDot == 0) {
+        return
+    }
+
+    if (flag == true) {
+        console.log("thired")
+        press_button(dotBtn.value);
+        flag = false;
+        mosavivariable++;
+    }
+});
 
 /*--------------mosavi button-----------*/
 let mosavivariable = 0;
@@ -71,14 +114,15 @@ function mosavi() {
         gettextOfHistory.classList.add("hide");
 
     }
-
-
-}
-
-function testfunction() {
-    // console.log(showtextOfMemory)
+    firsDot = 0
 
 }
+
+// function testfunction() {
+//     console.log("flage =" +flag);
+//     console.log("firsDot = "+ firsDot)
+
+// }
 
 
 
@@ -129,11 +173,15 @@ getSubBtn.addEventListener("click", () => {
     }
 })
 
+
+
 /* ----------------c button---------------*/
 document.querySelector(".grid3").addEventListener("click", clear);
 function clear() {
+    firsDot = 0;
     document.getElementById("for_dis").innerHTML = "0";
     document.getElementById("showBeforResult").innerText = " ";
+
 }
 
 
@@ -247,7 +295,7 @@ function historyBTN() {
 /*-------------------ce button----------- */
 
 function cebutton() {
-    
+
     let v = document.getElementById("for_dis").innerHTML.split('');
     let ar = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
