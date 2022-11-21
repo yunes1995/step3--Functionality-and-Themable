@@ -5,9 +5,9 @@ function testfunction() {
     // let fortest = document.getElementsByClassName(".history")
     // fortest.childNodes;
     // console.log(fortest)
-    console.log("equalAgain ="+ equalAgain);
+    console.log("equalAgain =" + equalAgain);
     // console.log("mosavi variable = "+ mosavivariable)
-    console.log("equql flag = "+ equalAgainFlage)
+    console.log("equql flag = " + equalAgainFlage)
 }
 /*----------------- 1 - 9 button -------------*/
 let counterfunc = 0;
@@ -106,14 +106,14 @@ function mosavi() {
     let soal = document.getElementById("for_dis").innerHTML;
     let memoryDis = document.getElementById("historyFuncID");
     /*new*//*new*//*new*//*new*//*new*//*new*//*new*//*new*//*new*/
-    
-    if(equalAgainFlage == true && equalAgain == "A"){
-       let soal = + document.getElementById("for_dis").innerHTML;
-       let soal2 = document.getElementById("showBeforResult").innerText;
+
+    if (equalAgainFlage == true && equalAgain == "A") {
+        let soal = + document.getElementById("for_dis").innerHTML;
+        let soal2 = document.getElementById("showBeforResult").innerText;
         soal2.split("2 ,1");
         console.log(soal2);
-    //    let newsoal = soal + soal;
-    //    document.getElementById("for_dis").innerHTML= newsoal;
+        //    let newsoal = soal + soal;
+        //    document.getElementById("for_dis").innerHTML= newsoal;
     }
     // if(equalAgainFlage == true && equalAgain == "B"){
     //     let soal = + document.getElementById("for_dis").innerHTML;
@@ -126,7 +126,7 @@ function mosavi() {
     //     let newsoal = soal * soal;
     //     document.getElementById("for_dis").innerHTML= newsoal;
     // }
-   /*new*//*new*//*new*//*new*//*new*//*new*//*new*//*new*/
+    /*new*//*new*//*new*//*new*//*new*//*new*//*new*//*new*/
     if (flagNewNumber == true) {
         return
     }
@@ -143,8 +143,8 @@ function mosavi() {
         newHistory.className = "contetnthistory";
         newHistory.innerHTML = "<p>" + soal + " " + "=" + " " + natijeh + "</p>";
         memoryDis.appendChild(newHistory);
-    
-    // add to mini history
+
+        // add to mini history
         let miniHistoryDiv = document.getElementById("showForMiniHistory2");
         let addToMiniHistory = document.createElement("div");
         addToMiniHistory.className = "contentMiniHistory";
@@ -163,12 +163,12 @@ function mosavi() {
             ShowPWhitLastHistory--;
             if (ShowPWhitLastHistory == 0) {
                 let gettextOfMemory = document.getElementById("textOfHistory");
-                gettextOfMemory.classList.remove("hide")
+                gettextOfMemory.classList.remove("hide");
             }
-           
+
         })
 
-    
+
         mosavivariable = 0;
         flagNewNumber = true;
         // remove the (There's no history yet) text
@@ -177,7 +177,7 @@ function mosavi() {
         gettextOfHistory.classList.add("hide");
 
         /*new*//*new*//*new*//*new*//*new*//*new*//*new*/
-     
+
         equalAgainFlage = true;
 
     }
@@ -286,17 +286,17 @@ function deleter() {
 /*------------------------------history--------------------------------*/
 
 /*----------------- mini size history------------------*/
-function historyMini(){
+function historyMini() {
     console.log("ok")
     let showMiniHistory = document.getElementById("showForMiniHistory");
-        showMiniHistory.classList.remove("hide");
+    showMiniHistory.classList.remove("hide");
 }
-function clearMiniHistory(){
+function clearMiniHistory() {
     document.getElementById("showForMiniHistory2").innerHTML = " ";
 }
-function closeMiniHistory(){
+function closeMiniHistory() {
     let showMiniHistory = document.getElementById("showForMiniHistory");
-        showMiniHistory.classList.add("hide");
+    showMiniHistory.classList.add("hide");
 }
 
 /****************clear history ********************** */
@@ -396,7 +396,7 @@ function cebutton() {
     // console.log(v);
     for (ar of v) {
         let index = ar.indexOf(parseInt(ar));
-        
+
         if (index == -1) {
             v.pop();
             v = v.join("");
@@ -407,7 +407,7 @@ function cebutton() {
         }
 
     }
-    
+
     flag = true;
 }
 /*---------------------darsad button------------- */
@@ -429,40 +429,76 @@ function calsqrt() {
 /*---------------------------tavan 2--------------*/
 
 function powerTwo() {
+    let gettextOfMemory = document.getElementById("textOfHistory");
+    gettextOfMemory.classList.add("hide");
+    ShowPWhitLastHistory++;
+
     const x = document.getElementById("for_dis").innerHTML;
     let xresult = Math.pow(x, 2);
     document.getElementById("for_dis").innerHTML = xresult;
-    /* add to history*/ 
+    /* add to history*/
     let memoryDis = document.getElementById("historyFuncID");
     let newHistory = document.createElement("div");
     newHistory.className = "contetnthistory";
-    newHistory.innerHTML = "<p>" + x+"<sup>"+"2"+"</sup>" + " " + "=" + " " + xresult + "</p>";
+    newHistory.innerHTML = "<p>" + x + "<sup>" + "2" + "</sup>" + " " + "=" + " " + xresult + "</p>";
     memoryDis.appendChild(newHistory);
     // add delete button
     let memoryDeleter = document.createElement("button");
-        memoryDeleter.classList.add("memoryDelete");
-        memoryDeleter.innerHTML = "delete";
-        newHistory.appendChild(memoryDeleter);
+    memoryDeleter.classList.add("memoryDelete");
+    memoryDeleter.innerHTML = "delete";
+    newHistory.appendChild(memoryDeleter);
 
-        memoryDeleter.addEventListener("click", (event) => {
-            const target = event.target;
-            target.parentNode.remove();
-            ShowPWhitLastHistory--;
-            if (ShowPWhitLastHistory == 0) {
-                let gettextOfMemory = document.getElementById("textOfHistory");
-                gettextOfMemory.classList.remove("hide")
-            }
-           
-        })
+    memoryDeleter.addEventListener("click", (event) => {
+        const target = event.target;
+        target.parentNode.remove();
+        ShowPWhitLastHistory--;
+        if (ShowPWhitLastHistory == 0) {
+            let gettextOfMemory = document.getElementById("textOfHistory");
+            gettextOfMemory.classList.remove("hide")
+        }
 
+    })
+    let beforResult =  document.getElementById("showBeforResult");
+    beforResult.innerHTML = "<p>" + x + "<sup>" + "2" + "</sup>" + " " + "=" + "</p>";
 }
 
 /*---------------------------tavan 3--------------*/
 
 function powerThree() {
+    ShowPWhitLastHistory++;
+    let gettextOfMemory = document.getElementById("textOfHistory");
+    gettextOfMemory.classList.add("hide");
+
     const x = document.getElementById("for_dis").innerHTML;
     let xresult = Math.pow(x, 3);
     document.getElementById("for_dis").innerHTML = xresult;
+    /* add to history*/
+    let memoryDis = document.getElementById("historyFuncID");
+    let newHistory = document.createElement("div");
+    newHistory.className = "contetnthistory";
+    newHistory.innerHTML = "<p>" + x + "<sup>" + "3" + "</sup>" + " " + "=" + " " + xresult + "</p>";
+    memoryDis.appendChild(newHistory);
+    // add delete button
+    let memoryDeleter = document.createElement("button");
+    memoryDeleter.classList.add("memoryDelete");
+    memoryDeleter.innerHTML = "delete";
+    newHistory.appendChild(memoryDeleter);
+
+    memoryDeleter.addEventListener("click", (event) => {
+        const target = event.target;
+        target.parentNode.remove();
+        ShowPWhitLastHistory--;
+        if (ShowPWhitLastHistory == 0) {
+            let gettextOfMemory = document.getElementById("textOfHistory");
+            gettextOfMemory.classList.remove("hide")
+        }
+
+    })
+    let beforResult =  document.getElementById("showBeforResult");
+    beforResult.innerHTML = "<p>" + x + "<sup>" + "3" + "</sup>" + " " + "=" + "</p>";
+    // console.log(beforResult);
+    // console.log("hi")
+
 }
 
 /*------------------------1/x---------------------*/

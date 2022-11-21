@@ -237,16 +237,17 @@ body {
 
 .clearMiniHistory {
     position: absolute;
-    top: 86%;
+    top: 84%;
     right: 2%;
     width: 18px;
-    width: 34px;
-    height: 40px;
+    width: 40px;
+    height: 56px;
     font-size: 32px;
     background-color: initial;
 }
 .clearMiniHistory:hover{
-    background-color: rgba(255, 255, 0, 0.466);
+    /* background-color: rgba(255, 255, 0, 0.466); */
+    border: 5px solid #a36262;
     border-radius: 20px;
 }
 /*--------------------------------functionlty history-----------------------------------*/
