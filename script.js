@@ -14,6 +14,7 @@ let showtextOfMemory = false;
 let firsDot = 0;
 let ShowPWhitLastHistory = 0;
 let ShowPWhitLastMemory = 0;
+// let historyMiniflag = false;
 
 function press_button(value) {
 
@@ -116,6 +117,13 @@ function mosavi() {
         newHistory.className = "contetnthistory";
         newHistory.innerHTML = "<p>" + soal + " " + "=" + " " + natijeh + "</p>";
         memoryDis.appendChild(newHistory);
+    
+    // add to mini history
+        let miniHistoryDiv = document.getElementById("showForMiniHistory");
+        let addToMiniHistory = document.createElement("div");
+        addToMiniHistory.className = "contentMiniHistory";
+        addToMiniHistory.innerHTML = "<p class = 'showInMiniHistory'>" + soal + " " + "=" + " " + natijeh + "</p>";
+        miniHistoryDiv.appendChild(addToMiniHistory);
 
         // add button delete in history
         let memoryDeleter = document.createElement("button");
@@ -237,6 +245,53 @@ function deleter() {
 
 }
 /*------------------------------history--------------------------------*/
+
+/*----------------- mini size history------------------*/
+function historyMini(){
+    console.log("ok")
+    let showMiniHistory = document.getElementById("showForMiniHistory");
+        showMiniHistory.classList.remove("hide");
+        /*new newwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww*/
+    // let natijeh = eval(document.getElementById("for_dis").innerHTML);
+    // let soal = document.getElementById("for_dis").innerHTML;
+    // let memoryDis = document.getElementById("showForMiniHistory");
+    // if (flagNewNumber == true) {
+    //     return
+    // }
+    // if (flagNewNumber == false && mosavivariable > 0) {
+    //     document.getElementById("for_dis").innerHTML = natijeh;
+    //     document.getElementById("showBeforResult").innerHTML = soal + " " + "=";
+    // }
+
+
+    // // show and add to history
+    // if (mosavivariable > 0) {
+    //     ShowPWhitLastHistory++;
+    //     let newHistory = document.createElement("div");
+    //     newHistory.className = "contetnthistory";
+    //     newHistory.innerHTML = "<p>" + soal + " " + "=" + " " + natijeh + "</p>";
+    //     memoryDis.appendChild(newHistory);
+
+    //     // add button delete in history
+    //     let memoryDeleter = document.createElement("button");
+    //     memoryDeleter.classList.add("memoryDelete");
+    //     memoryDeleter.innerHTML = "delete";
+    //     newHistory.appendChild(memoryDeleter);
+
+    //     memoryDeleter.addEventListener("click", (event) => {
+    //         const target = event.target;
+    //         target.parentNode.remove();
+    //         ShowPWhitLastHistory--;
+    //         if (ShowPWhitLastHistory == 0) {
+    //             let gettextOfMemory = document.getElementById("textOfHistory");
+    //             gettextOfMemory.classList.remove("hide")
+    //         }
+    /*new newwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww*/
+}
+function closeMiniHistory(){
+    let showMiniHistory = document.getElementById("showForMiniHistory");
+        showMiniHistory.classList.add("hide");
+}
 
 /****************clear history ********************** */
 function cleanerHistory() {
