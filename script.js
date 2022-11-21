@@ -2,9 +2,12 @@
 function testfunction() {
     // console.log(ShowPWhitLastMemory);
     // // console.log("firsDot = "+ firsDot)
-    let fortest = document.getElementsByClassName(".history")
-    fortest.childNodes;
-    console.log(fortest)
+    // let fortest = document.getElementsByClassName(".history")
+    // fortest.childNodes;
+    // console.log(fortest)
+    console.log("equalAgain ="+ equalAgain);
+    // console.log("mosavi variable = "+ mosavivariable)
+    console.log("equql flag = "+ equalAgainFlage)
 }
 /*----------------- 1 - 9 button -------------*/
 let counterfunc = 0;
@@ -14,16 +17,18 @@ let showtextOfMemory = false;
 let firsDot = 0;
 let ShowPWhitLastHistory = 0;
 let ShowPWhitLastMemory = 0;
+let equalAgain = " ";
+let equalAgainFlage = false;
 // let historyMiniflag = false;
 
 function press_button(value) {
 
     let displayy = getDisplayValue();
-    console.log("dispay value = " + displayy)
+    // console.log("dispay value = " + displayy)
     if (displayy == "0.") {
         document.getElementById("for_dis").innerText = "0." + value;
         flag = true;
-        console.log("ta inja omadam")
+        // console.log("ta inja omadam")
     }
     else {
 
@@ -97,10 +102,31 @@ getDotBtn.addEventListener("click", () => {
 let mosavivariable = 0;
 
 function mosavi() {
-
     let natijeh = eval(document.getElementById("for_dis").innerHTML);
     let soal = document.getElementById("for_dis").innerHTML;
     let memoryDis = document.getElementById("historyFuncID");
+    /*new*//*new*//*new*//*new*//*new*//*new*//*new*//*new*//*new*/
+    
+    if(equalAgainFlage == true && equalAgain == "A"){
+       let soal = + document.getElementById("for_dis").innerHTML;
+       let soal2 = document.getElementById("showBeforResult").innerText;
+        soal2.split("2 ,1");
+        console.log(soal2);
+    //    let newsoal = soal + soal;
+    //    document.getElementById("for_dis").innerHTML= newsoal;
+    }
+    // if(equalAgainFlage == true && equalAgain == "B"){
+    //     let soal = + document.getElementById("for_dis").innerHTML;
+    //    let newsoal = soal - soal;
+    //    document.getElementById("for_dis").innerHTML= newsoal;
+    // }
+    // if(equalAgainFlage == true && equalAgain == "C"){
+    //     // console.log("zarb")
+    //     let soal = + document.getElementById("for_dis").innerHTML;
+    //     let newsoal = soal * soal;
+    //     document.getElementById("for_dis").innerHTML= newsoal;
+    // }
+   /*new*//*new*//*new*//*new*//*new*//*new*//*new*//*new*/
     if (flagNewNumber == true) {
         return
     }
@@ -139,15 +165,20 @@ function mosavi() {
                 let gettextOfMemory = document.getElementById("textOfHistory");
                 gettextOfMemory.classList.remove("hide")
             }
+           
         })
 
-
+    
         mosavivariable = 0;
         flagNewNumber = true;
         // remove the (There's no history yet) text
         showtextOfHistory = true;
         let gettextOfHistory = document.getElementById("textOfHistory");
         gettextOfHistory.classList.add("hide");
+
+        /*new*//*new*//*new*//*new*//*new*//*new*//*new*/
+     
+        equalAgainFlage = true;
 
     }
     firsDot = 0
@@ -168,6 +199,8 @@ getBtndivision.addEventListener("click", () => {
         press_button(divisionBtn.value);
         flag = false;
         mosavivariable++;
+        /*new*//*new*//*new*//*new*//*new*//*new*//*new*/
+        equalAgain = "D";
     }
 });
 
@@ -179,6 +212,8 @@ getBtnMultiplay.addEventListener("click", () => {
         press_button(multiplayBtn.value);
         flag = false;
         mosavivariable++;
+        /*new*//*new*//*new*//*new*//*new*//*new*//*new*/
+        equalAgain = "C";
     }
 });
 
@@ -190,6 +225,8 @@ getMinesBtn.addEventListener("click", () => {
         press_button(minesBtn.value);
         flag = false;
         mosavivariable++;
+        /*new*//*new*//*new*//*new*//*new*//*new*/
+        equalAgain = "B"
     }
 })
 
@@ -201,6 +238,8 @@ getSubBtn.addEventListener("click", () => {
         press_button(subBtn.value);
         flag = false;
         mosavivariable++;
+        /*new*//*new*//*new*//*new*//*new*/
+        equalAgain = "A";
     }
 })
 
@@ -354,9 +393,10 @@ function cebutton() {
 
     let v = document.getElementById("for_dis").innerHTML.split('');
     let ar = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-
+    // console.log(v);
     for (ar of v) {
         let index = ar.indexOf(parseInt(ar));
+        
         if (index == -1) {
             v.pop();
             v = v.join("");
@@ -367,6 +407,7 @@ function cebutton() {
         }
 
     }
+    
     flag = true;
 }
 /*---------------------darsad button------------- */
@@ -391,6 +432,29 @@ function powerTwo() {
     const x = document.getElementById("for_dis").innerHTML;
     let xresult = Math.pow(x, 2);
     document.getElementById("for_dis").innerHTML = xresult;
+    /* add to history*/ 
+    let memoryDis = document.getElementById("historyFuncID");
+    let newHistory = document.createElement("div");
+    newHistory.className = "contetnthistory";
+    newHistory.innerHTML = "<p>" + x+"<sup>"+"2"+"</sup>" + " " + "=" + " " + xresult + "</p>";
+    memoryDis.appendChild(newHistory);
+    // add delete button
+    let memoryDeleter = document.createElement("button");
+        memoryDeleter.classList.add("memoryDelete");
+        memoryDeleter.innerHTML = "delete";
+        newHistory.appendChild(memoryDeleter);
+
+        memoryDeleter.addEventListener("click", (event) => {
+            const target = event.target;
+            target.parentNode.remove();
+            ShowPWhitLastHistory--;
+            if (ShowPWhitLastHistory == 0) {
+                let gettextOfMemory = document.getElementById("textOfHistory");
+                gettextOfMemory.classList.remove("hide")
+            }
+           
+        })
+
 }
 
 /*---------------------------tavan 3--------------*/
