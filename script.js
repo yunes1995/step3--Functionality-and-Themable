@@ -1,11 +1,19 @@
 
+function testfunction() {
+    // console.log(ShowPWhitLastMemory);
+    // // console.log("firsDot = "+ firsDot)
+    let fortest = document.getElementsByClassName(".history")
+    fortest.childNodes;
+    console.log(fortest)
+}
 /*----------------- 1 - 9 button -------------*/
 let counterfunc = 0;
 let flagNewNumber = false;
 let showtextOfHistory = false;
 let showtextOfMemory = false;
 let firsDot = 0;
-
+let ShowPWhitLastHistory = 0;
+let ShowPWhitLastMemory = 0;
 
 function press_button(value) {
 
@@ -94,7 +102,8 @@ function mosavi() {
     let memoryDis = document.getElementById("historyFuncID");
     if (flagNewNumber == true) {
         return
-    } else {
+    }
+    if (flagNewNumber == false && mosavivariable > 0) {
         document.getElementById("for_dis").innerHTML = natijeh;
         document.getElementById("showBeforResult").innerHTML = soal + " " + "=";
     }
@@ -102,10 +111,29 @@ function mosavi() {
 
     // show and add to history
     if (mosavivariable > 0) {
+        ShowPWhitLastHistory++;
         let newHistory = document.createElement("div");
         newHistory.className = "contetnthistory";
-        newHistory.innerHTML = "<p>" + soal + "=" + natijeh + "</p>";
+        newHistory.innerHTML = "<p>" + soal + " " + "=" + " " + natijeh + "</p>";
         memoryDis.appendChild(newHistory);
+
+        // add button delete in history
+        let memoryDeleter = document.createElement("button");
+        memoryDeleter.classList.add("memoryDelete");
+        memoryDeleter.innerHTML = "delete";
+        newHistory.appendChild(memoryDeleter);
+
+        memoryDeleter.addEventListener("click", (event) => {
+            const target = event.target;
+            target.parentNode.remove();
+            ShowPWhitLastHistory--;
+            if (ShowPWhitLastHistory == 0) {
+                let gettextOfMemory = document.getElementById("textOfHistory");
+                gettextOfMemory.classList.remove("hide")
+            }
+        })
+
+
         mosavivariable = 0;
         flagNewNumber = true;
         // remove the (There's no history yet) text
@@ -118,11 +146,6 @@ function mosavi() {
 
 }
 
-// function testfunction() {
-//     console.log("flage =" +flag);
-//     console.log("firsDot = "+ firsDot)
-
-// }
 
 
 
@@ -222,6 +245,7 @@ function cleanerHistory() {
         showtextOfHistory = false;
         let gettextOfHistory = document.getElementById("textOfHistory");
         gettextOfHistory.classList.remove("hide");
+        ShowPWhitLastHistory = 0;
     }
     else if (memoryFlag == true) {
         document.getElementById("memoryFuncID").innerHTML = " ";
@@ -278,15 +302,25 @@ function historyBTN() {
     /* swich between memory and history display */
     memoryFlag = false;
     // show or hide text (There's no history yet)
-    let gettextOfMemory = document.getElementById("textOfMemory");
-    gettextOfMemory.classList.add("hide")
-    if (showtextOfHistory == true) {
-        return
-    }
-    else {
+    if (memoryFlag == false && ShowPWhitLastHistory == 0) {
         let gettextOfHistory = document.getElementById("textOfHistory");
         gettextOfHistory.classList.remove("hide");
+        let gettextOfMemory = document.getElementById("textOfMemory");
+        gettextOfMemory.classList.add("hide")
     }
+    if (memoryFlag == false && ShowPWhitLastHistory > 0) {
+        let gettextOfMemory = document.getElementById("textOfMemory");
+        gettextOfMemory.classList.add("hide")
+    }
+    // let gettextOfMemory = document.getElementById("textOfMemory");
+    // gettextOfMemory.classList.add("hide")
+    // if (showtextOfHistory == true) {
+    //     return
+    // }
+    // else {
+    //     let gettextOfHistory = document.getElementById("textOfHistory");
+    //     gettextOfHistory.classList.remove("hide");
+    // }
 }
 
 
@@ -473,14 +507,19 @@ function creatMemory() {
 
     /*-------------MC button------------------*/
     Btn1.addEventListener("click", MCremover = (event) => {
+        ShowPWhitLastMemory--;
         const target = event.target;
-        let newvar = target.parentNode.remove();
-        console.log(newvar)
+        target.parentNode.remove();
+
         MCcounter--;
         MCcounterDisable--;
         if (MCcounterDisable == 0) {
             MCButton.setAttribute("disabled", true);
             MRButton.setAttribute("disabled", true);
+        }
+        if (ShowPWhitLastMemory == 0) {
+            let gettextOfMemory = document.getElementById("textOfMemory");
+            gettextOfMemory.classList.remove("hide")
         }
     })
 
@@ -493,6 +532,7 @@ function creatMemory() {
     addToMemoryDiv.appendChild(newDIvInMemory);
     MCButton.removeAttribute("disabled");
     MRButton.removeAttribute("disabled");
+    ShowPWhitLastMemory++;
 }
 
 
@@ -599,7 +639,7 @@ const MSButtonFunc = () => {
     MCcounterDisable++;
     creatMemory();
     let gettextOfMemory = document.getElementById("textOfMemory");
-    gettextOfMemory.classList.add("hide")
+    gettextOfMemory.classList.add("hide");
     showtextOfMemory = true;
 }
 

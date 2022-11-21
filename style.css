@@ -251,7 +251,20 @@ body {
     padding: 5px;
     font-size: 15px;
 }
-
+.memoryDelete {
+    padding: 6px;
+    font-size: 14px;
+    margin-left: 148px;
+    margin-bottom: 16px;
+    border: 1px solid black;
+}
+.memoryDelete:hover{
+    padding: 7px;
+    font-size: 16px;
+    background-color: #0096878e;
+    border-radius: 5px;
+    margin-left: 145px;
+}
 /*------------------------------------------- Display------------------------------------*/
 
 
@@ -272,7 +285,7 @@ body {
     display: block;
     position: relative;
     left: 94%;
-    width: 25px
+    width: 85px
 }
 
 /*------------------------------------------- option --------------------------------------*/
