@@ -430,27 +430,30 @@ function calsqrt() {
     }
 
     /*newwwwwwwwwwwwwwwwwwww*/
-     /* add to history*/
-     let memoryDis = document.getElementById("historyFuncID");
-     let newHistory = document.createElement("div");
-     newHistory.className = "contetnthistory";
-     newHistory.innerHTML = "<p>"+ "sqrt"+" " + "("+x+")"+ " " + "=" + " " + xresult + "</p>";
-     memoryDis.appendChild(newHistory);
-     // add delete button
-     let memoryDeleter = document.createElement("button");
-     memoryDeleter.classList.add("memoryDelete");
-     memoryDeleter.innerHTML = "delete";
-     newHistory.appendChild(memoryDeleter);
- 
-     memoryDeleter.addEventListener("click", (event) => {
-         const target = event.target;
-         target.parentNode.remove();
-         ShowPWhitLastHistory--;
-         if (ShowPWhitLastHistory == 0) {
-             let gettextOfMemory = document.getElementById("textOfHistory");
-             gettextOfMemory.classList.remove("hide")
-         }
-})
+    /* add to history*/
+    let memoryDis = document.getElementById("historyFuncID");
+    let newHistory = document.createElement("div");
+    newHistory.className = "contetnthistory";
+    newHistory.innerHTML = "<p>" + "sqrt" + " " + "(" + x + ")" + " " + "=" + " " + xresult + "</p>";
+    memoryDis.appendChild(newHistory);
+    // add delete button
+    let memoryDeleter = document.createElement("button");
+    memoryDeleter.classList.add("memoryDelete");
+    memoryDeleter.innerHTML = "delete";
+    newHistory.appendChild(memoryDeleter);
+
+    memoryDeleter.addEventListener("click", (event) => {
+        const target = event.target;
+        target.parentNode.remove();
+        ShowPWhitLastHistory--;
+        if (ShowPWhitLastHistory == 0) {
+            let gettextOfMemory = document.getElementById("textOfHistory");
+            gettextOfMemory.classList.remove("hide")
+        }
+    })
+    let beforResult = document.getElementById("showBeforResult");
+    // beforResult.innerHTML = "hi";
+    beforResult.innerHTML =  "<p>" + "sqrt" + "(" + x + ")" + "=" + "</p>";
 }
 /*---------------------------tavan 2--------------*/
 
@@ -484,7 +487,7 @@ function powerTwo() {
         }
 
     })
-    let beforResult =  document.getElementById("showBeforResult");
+    let beforResult = document.getElementById("showBeforResult");
     beforResult.innerHTML = "<p>" + x + "<sup>" + "2" + "</sup>" + " " + "=" + "</p>";
 }
 
@@ -520,7 +523,7 @@ function powerThree() {
         }
 
     })
-    let beforResult =  document.getElementById("showBeforResult");
+    let beforResult = document.getElementById("showBeforResult");
     beforResult.innerHTML = "<p>" + x + "<sup>" + "3" + "</sup>" + " " + "=" + "</p>";
     // console.log(beforResult);
     // console.log("hi")
@@ -530,9 +533,36 @@ function powerThree() {
 /*------------------------1/x---------------------*/
 
 function onedivison() {
+    ShowPWhitLastHistory++;
+    let gettextOfMemory = document.getElementById("textOfHistory");
+    gettextOfMemory.classList.add("hide");
     const x = document.getElementById("for_dis").innerHTML;
     let result = 1 / x;
     document.getElementById("for_dis").innerHTML = result;
+
+    let memoryDis = document.getElementById("historyFuncID");
+    let newHistory = document.createElement("div");
+    newHistory.className = "contetnthistory";
+    newHistory.innerHTML = "<p>" +"1"+ " " +"/" +" " + x + " " +"="+ " " +result+ "</p>";
+    memoryDis.appendChild(newHistory);
+    // add delete button
+    let memoryDeleter = document.createElement("button");
+    memoryDeleter.classList.add("memoryDelete");
+    memoryDeleter.innerHTML = "delete";
+    newHistory.appendChild(memoryDeleter);
+
+    memoryDeleter.addEventListener("click", (event) => {
+        const target = event.target;
+        target.parentNode.remove();
+        ShowPWhitLastHistory--;
+        if (ShowPWhitLastHistory == 0) {
+            let gettextOfMemory = document.getElementById("textOfHistory");
+            gettextOfMemory.classList.remove("hide")
+        }
+
+    })
+    let beforResult = document.getElementById("showBeforResult");
+    beforResult.innerHTML = "<p>" +"1"+ " " +"/" +" " + x + " " +"="+ " "+ "</p>";
 }
 /* ---------------------negative number ------------*/
 
