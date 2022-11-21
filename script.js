@@ -419,12 +419,38 @@ function percentage() {
 /*------------------------sqrt root 2 ----------*/
 
 function calsqrt() {
+    let gettextOfMemory = document.getElementById("textOfHistory");
+    gettextOfMemory.classList.add("hide");
+    ShowPWhitLastHistory++;
     const x = document.getElementById("for_dis").innerHTML;
     let xresult = Math.sqrt(x);
     document.getElementById("for_dis").innerHTML = xresult;
     if (x < 0) {
         document.getElementById("for_dis").innerHTML = "Invalid input";
     }
+
+    /*newwwwwwwwwwwwwwwwwwww*/
+     /* add to history*/
+     let memoryDis = document.getElementById("historyFuncID");
+     let newHistory = document.createElement("div");
+     newHistory.className = "contetnthistory";
+     newHistory.innerHTML = "<p>"+ "sqrt"+" " + "("+x+")"+ " " + "=" + " " + xresult + "</p>";
+     memoryDis.appendChild(newHistory);
+     // add delete button
+     let memoryDeleter = document.createElement("button");
+     memoryDeleter.classList.add("memoryDelete");
+     memoryDeleter.innerHTML = "delete";
+     newHistory.appendChild(memoryDeleter);
+ 
+     memoryDeleter.addEventListener("click", (event) => {
+         const target = event.target;
+         target.parentNode.remove();
+         ShowPWhitLastHistory--;
+         if (ShowPWhitLastHistory == 0) {
+             let gettextOfMemory = document.getElementById("textOfHistory");
+             gettextOfMemory.classList.remove("hide")
+         }
+})
 }
 /*---------------------------tavan 2--------------*/
 
