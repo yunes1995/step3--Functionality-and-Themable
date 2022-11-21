@@ -237,11 +237,18 @@ body {
 
 .clearMiniHistory {
     position: absolute;
-    top: 91%;
-    right: 5%;
-
+    top: 86%;
+    right: 2%;
+    width: 18px;
+    width: 34px;
+    height: 40px;
+    font-size: 32px;
+    background-color: initial;
 }
-
+.clearMiniHistory:hover{
+    background-color: rgba(255, 255, 0, 0.466);
+    border-radius: 20px;
+}
 /*--------------------------------functionlty history-----------------------------------*/
 .contetnthistory {
     margin-left: 9%;
