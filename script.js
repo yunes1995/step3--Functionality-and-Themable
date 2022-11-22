@@ -117,7 +117,7 @@ getDotBtn.addEventListener("click", () => {
 let mosavivariable = 0;
 
 function mosavi() {
-
+    percentageArray2 = [];
     /* functionlty press equal again*/
     firstEqual++;
     console.log(firstEqual)
@@ -483,7 +483,7 @@ function percentage() {
         })
     }
     
-    percentageArray1 = [];
+    // percentageArray1 = [];
     percentageArray2 = [];
     flagNewNumber = true;
 
