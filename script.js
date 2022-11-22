@@ -1,8 +1,6 @@
 
 function testfunction() {
-    console.log("percentageArray1 = " + percentageArray1);
-    console.log("persentagnumber2 = " + percentageArray2)
-    console.log(equalAgain)
+   console.log(counetrMemory)
 }
 /*----------------- 1 - 9 button -------------*/
 let counterfunc = 0;
@@ -412,10 +410,7 @@ function percentage() {
     let firstPartOfNumber = + percentageArray1.join("");
 
     percentageArray2.shift();
-    ////////////////////////////////////////
-    // let whichamal = percentageArray2.shift();
-    // console.log(whichamal)
-    ////////////////////////////////////////
+  
 
     let secondPartOfNumber = + percentageArray2.join("");
 
@@ -482,8 +477,6 @@ function percentage() {
             }
         })
     }
-    
-    // percentageArray1 = [];
     percentageArray2 = [];
     flagNewNumber = true;
 
@@ -823,15 +816,14 @@ function addToMemory() {
     if (counetrMemory == 0 && MScounter == 0) {
         creatMemory();
     }
-    else if (counetrMemory > 0 && MScounter == 0) {
+    if (counetrMemory > 0 && MScounter == 0) {
+        console.log("im here")
         let natijeh = + document.getElementById("for_dis").innerText;
         let MplusResult = + document.querySelector("#memoryFuncID p").innerText;
         let sum = natijeh + MplusResult;
-
-        showinP = document.getElementsByTagName("p")[2];
-        showinP.innerText = sum;
+        document.querySelector("#memoryFuncID p").innerText = sum;
     }
-    else if (counetrMemory > 0 && MScounter > 0) {
+    if (counetrMemory > 0 && MScounter > 0) {
 
         let whichp = document.getElementsByTagName("p");
         let pcounternew = whichp.length;
