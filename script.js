@@ -1,16 +1,7 @@
 
 function testfunction() {
-    // console.log(ShowPWhitLastMemory);
-    // // console.log("firsDot = "+ firsDot)
-    // let fortest = document.getElementsByClassName(".history")
-    // fortest.childNodes;
-    // console.log(fortest)
-    // console.log("equalAgain =" + equalAgain);
-    // console.log("mosavi variable = "+ mosavivariable)
-    // console.log("equql flag = " + equalAgainFlage)
-    // newArray.shift();
-    console.log(newArray);
-    // console.log(newArray.join(""))
+    console.log("percentageArray1 = " + percentageArray1);
+    console.log("persentagnumber2 = " + percentageArray2)
 }
 /*----------------- 1 - 9 button -------------*/
 let counterfunc = 0;
@@ -22,33 +13,36 @@ let ShowPWhitLastHistory = 0;
 let ShowPWhitLastMemory = 0;
 let equalAgain = " ";
 let equalAgainFlage = false;
-// let historyMiniflag = false;
 let testvariable = 0;
 let newArray = [];
 let firstEqual = 0;
+/*persentage*/
+let percentageArray1 = [];
+let percentageArray2 = [];
+let firstAmal = 0;
+/*persentage*/
+
 function press_button(value) {
-    /*new/*new/*new/*new/*new/*new/*new/*new/*new/*new/*new*/
+    /*persentage*/
+    if (firstAmal == 0) {
+        let valueNumber = value;
+        percentageArray1.push(valueNumber);
+    }
+    if (firstAmal > 0) {
+        let valueNumber2 = value;
+        percentageArray2.push(valueNumber2);
+    }
+    /*persentage*/
+
+    firstEqual = 0;
     let getLastValue = value;
     newArray.push(getLastValue);
 
-    // let newArray2 = newArray.shift();
-    // console.log(newArray2);
-    // let resultArray = newArray.join("");
-
-
-    // let getLastValue = value;
-    // getLastValue + value;
-    // testvariable++;
-    // if(testvariable == 2){
-    //     console.log(getLastValue)
-    // }
-    /*new/*new/*new/*new/*new/*new/*new/*new/*new/*new/*new*/
     let displayy = getDisplayValue();
-    // console.log("dispay value = " + displayy)
+
     if (displayy == "0.") {
         document.getElementById("for_dis").innerText = "0." + value;
         flag = true;
-        // console.log("ta inja omadam")
     }
     else {
 
@@ -123,7 +117,7 @@ let mosavivariable = 0;
 
 function mosavi() {
 
-   /* functionlty press equal again*/
+    /* functionlty press equal again*/
     firstEqual++;
     console.log(firstEqual)
     if (firstEqual == 1) {
@@ -159,7 +153,7 @@ function mosavi() {
         let newsoal = soal / lastNumber;
         document.getElementById("for_dis").innerHTML = newsoal;
     }
-  //////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////
     if (flagNewNumber == true) {
         return
     }
@@ -208,9 +202,6 @@ function mosavi() {
         showtextOfHistory = true;
         let gettextOfHistory = document.getElementById("textOfHistory");
         gettextOfHistory.classList.add("hide");
-
-        /*new*//*new*//*new*//*new*//*new*//*new*//*new*/
-
         equalAgainFlage = true;
 
     }
@@ -229,13 +220,11 @@ getBtndivision.addEventListener("click", () => {
     if (flag == false) {
         return;
     } else {
-        /*new*/
+        firstAmal++;
         newArray = [];
-        /*new*/
         press_button(divisionBtn.value);
         flag = false;
         mosavivariable++;
-        /*new*//*new*//*new*//*new*//*new*//*new*//*new*/
         equalAgain = "D";
     }
 });
@@ -245,13 +234,11 @@ getBtnMultiplay.addEventListener("click", () => {
     if (flag == false) {
         return;
     } else {
-        /*new*/
+        firstAmal++;
         newArray = [];
-        /*new*/
         press_button(multiplayBtn.value);
         flag = false;
         mosavivariable++;
-        /*new*//*new*//*new*//*new*//*new*//*new*//*new*/
         equalAgain = "C";
     }
 });
@@ -261,13 +248,11 @@ getMinesBtn.addEventListener("click", () => {
     if (flag == false) {
         return;
     } else {
-        /*new*/
+        firstAmal++;
         newArray = [];
-        /*new*/
         press_button(minesBtn.value);
         flag = false;
         mosavivariable++;
-        /*new*//*new*//*new*//*new*//*new*//*new*/
         equalAgain = "B"
     }
 })
@@ -277,13 +262,11 @@ getSubBtn.addEventListener("click", () => {
     if (flag == false) {
         return;
     } else {
-        /*new*/
+        firstAmal++;
         newArray = [];
-        /*new*/
         press_button(subBtn.value);
         flag = false;
         mosavivariable++;
-        /*new*//*new*//*new*//*new*//*new*/
         equalAgain = "A";
     }
 })
@@ -296,20 +279,20 @@ function clear() {
     firsDot = 0;
     document.getElementById("for_dis").innerHTML = "0";
     document.getElementById("showBeforResult").innerText = " ";
-
+    percentageArray1 = [];
+    percentageArray2 = [];
 }
-
-
-/* ------------اعمال ریاضی----------------*/
-
-function mathic() {
-    alert("hi");
-}
-
-
 
 /*----------------hazv konandeh yeki -----------*/
 function deleter() {
+        /*persentage*/
+        if (firstAmal == 0) {
+            percentageArray1.pop();
+        }
+        if (firstAmal > 0) {
+            percentageArray2.pop();
+        }
+        /*persentage*/
     let valudisplay = document.getElementById("for_dis").innerHTML;
     var value = document.getElementById("for_dis").innerHTML;
     document.getElementById("for_dis").innerHTML = value.substr(0, value.length - 1);
@@ -418,17 +401,50 @@ function historyBTN() {
         let gettextOfMemory = document.getElementById("textOfMemory");
         gettextOfMemory.classList.add("hide")
     }
-    // let gettextOfMemory = document.getElementById("textOfMemory");
-    // gettextOfMemory.classList.add("hide")
-    // if (showtextOfHistory == true) {
-    //     return
-    // }
-    // else {
-    //     let gettextOfHistory = document.getElementById("textOfHistory");
-    //     gettextOfHistory.classList.remove("hide");
-    // }
 }
+/*------------------- percentage func-------------*/ 
+function percentage() {
+    let gettextOfMemory = document.getElementById("textOfHistory");
+    gettextOfMemory.classList.add("hide");
+    ShowPWhitLastHistory++;
 
+    let firstPartOfNumber = + percentageArray1.join("");
+
+    percentageArray2.shift();
+    let secondPartOfNumber = + percentageArray2.join("");
+
+    let darsadNumber = firstPartOfNumber * (secondPartOfNumber /100);
+    let result = firstPartOfNumber + darsadNumber;
+    document.getElementById("for_dis").innerHTML = result;
+    firstAmal = 0;
+     /* add to history*/
+     let memoryDis = document.getElementById("historyFuncID");
+     let newHistory = document.createElement("div");
+     newHistory.className = "contetnthistory";
+     newHistory.innerHTML = "<p>" + firstPartOfNumber + "+" +secondPartOfNumber +"%" +"=" + " " + result + "</p>";
+     memoryDis.appendChild(newHistory);
+     // add delete button
+     let memoryDeleter = document.createElement("button");
+     memoryDeleter.classList.add("memoryDelete");
+     memoryDeleter.innerHTML = "delete";
+     newHistory.appendChild(memoryDeleter);
+ 
+     memoryDeleter.addEventListener("click", (event) => {
+         const target = event.target;
+         target.parentNode.remove();
+         ShowPWhitLastHistory--;
+         if (ShowPWhitLastHistory == 0) {
+             let gettextOfMemory = document.getElementById("textOfHistory");
+             gettextOfMemory.classList.remove("hide")
+         }
+     })
+     let beforResult = document.getElementById("showBeforResult");
+     beforResult.innerHTML = "<p>" + firstPartOfNumber + "+" +secondPartOfNumber +"%" +"="+"</p>";
+    percentageArray1 = [];
+    percentageArray2 = [];
+    flagNewNumber = true;
+
+}
 
 
 
@@ -455,11 +471,8 @@ function cebutton() {
 
     flag = true;
 }
-/*---------------------darsad button------------- */
 
-function percentage() {
 
-}
 
 /*------------------------sqrt root 2 ----------*/
 
@@ -570,9 +583,6 @@ function powerThree() {
     })
     let beforResult = document.getElementById("showBeforResult");
     beforResult.innerHTML = "<p>" + x + "<sup>" + "3" + "</sup>" + " " + "=" + "</p>";
-    // console.log(beforResult);
-    // console.log("hi")
-
 }
 
 /*------------------------1/x---------------------*/
@@ -686,7 +696,7 @@ function setGradient() {
         + ", "
         + color2.value
         + ")";
-    // css.textContent = body.style.background + ";";
+
 }
 
 
