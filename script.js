@@ -2,6 +2,7 @@
 function testfunction() {
     console.log("percentageArray1 = " + percentageArray1);
     console.log("persentagnumber2 = " + percentageArray2)
+    console.log(equalAgain)
 }
 /*----------------- 1 - 9 button -------------*/
 let counterfunc = 0;
@@ -285,14 +286,14 @@ function clear() {
 
 /*----------------hazv konandeh yeki -----------*/
 function deleter() {
-        /*persentage*/
-        if (firstAmal == 0) {
-            percentageArray1.pop();
-        }
-        if (firstAmal > 0) {
-            percentageArray2.pop();
-        }
-        /*persentage*/
+    /*persentage*/
+    if (firstAmal == 0) {
+        percentageArray1.pop();
+    }
+    if (firstAmal > 0) {
+        percentageArray2.pop();
+    }
+    /*persentage*/
     let valudisplay = document.getElementById("for_dis").innerHTML;
     var value = document.getElementById("for_dis").innerHTML;
     document.getElementById("for_dis").innerHTML = value.substr(0, value.length - 1);
@@ -402,7 +403,7 @@ function historyBTN() {
         gettextOfMemory.classList.add("hide")
     }
 }
-/*------------------- percentage func-------------*/ 
+/*------------------- percentage func-------------*/
 function percentage() {
     let gettextOfMemory = document.getElementById("textOfHistory");
     gettextOfMemory.classList.add("hide");
@@ -411,35 +412,77 @@ function percentage() {
     let firstPartOfNumber = + percentageArray1.join("");
 
     percentageArray2.shift();
+    ////////////////////////////////////////
+    // let whichamal = percentageArray2.shift();
+    // console.log(whichamal)
+    ////////////////////////////////////////
+
     let secondPartOfNumber = + percentageArray2.join("");
 
-    let darsadNumber = firstPartOfNumber * (secondPartOfNumber /100);
-    let result = firstPartOfNumber + darsadNumber;
-    document.getElementById("for_dis").innerHTML = result;
+    let darsadNumber = firstPartOfNumber * (secondPartOfNumber / 100);
+
+    if (equalAgain == "A") {
+        let result = firstPartOfNumber + darsadNumber;
+        document.getElementById("for_dis").innerHTML = result;
+        addToHistorPersentage(result);
+    }
+    if (equalAgain == "B") {
+        let result = firstPartOfNumber - darsadNumber;
+        document.getElementById("for_dis").innerHTML = result;
+        addToHistorPersentage(result);
+    }
+    if (equalAgain == "C") {
+        let result = firstPartOfNumber * darsadNumber;
+        document.getElementById("for_dis").innerHTML = result;
+        addToHistorPersentage(result);
+    }
+    if (equalAgain == "D") {
+        let result = firstPartOfNumber / darsadNumber;
+        document.getElementById("for_dis").innerHTML = result;
+        addToHistorPersentage(result);
+    }
+
     firstAmal = 0;
-     /* add to history*/
-     let memoryDis = document.getElementById("historyFuncID");
-     let newHistory = document.createElement("div");
-     newHistory.className = "contetnthistory";
-     newHistory.innerHTML = "<p>" + firstPartOfNumber + "+" +secondPartOfNumber +"%" +"=" + " " + result + "</p>";
-     memoryDis.appendChild(newHistory);
-     // add delete button
-     let memoryDeleter = document.createElement("button");
-     memoryDeleter.classList.add("memoryDelete");
-     memoryDeleter.innerHTML = "delete";
-     newHistory.appendChild(memoryDeleter);
- 
-     memoryDeleter.addEventListener("click", (event) => {
-         const target = event.target;
-         target.parentNode.remove();
-         ShowPWhitLastHistory--;
-         if (ShowPWhitLastHistory == 0) {
-             let gettextOfMemory = document.getElementById("textOfHistory");
-             gettextOfMemory.classList.remove("hide")
-         }
-     })
-     let beforResult = document.getElementById("showBeforResult");
-     beforResult.innerHTML = "<p>" + firstPartOfNumber + "+" +secondPartOfNumber +"%" +"="+"</p>";
+    /* add to history*/
+    function addToHistorPersentage(result) {
+        let beforResult = document.getElementById("showBeforResult");
+        let memoryDis = document.getElementById("historyFuncID");
+        let newHistory = document.createElement("div");
+        newHistory.className = "contetnthistory";
+        if (equalAgain == "A") {
+            newHistory.innerHTML = "<p>" + firstPartOfNumber + "+" + secondPartOfNumber + "%" + "=" + " " + result + "</p>";
+            beforResult.innerHTML = "<p>" + firstPartOfNumber + "+" + secondPartOfNumber + "%" + "=" + "</p>";
+        }
+        if (equalAgain == "B") {
+            newHistory.innerHTML = "<p>" + firstPartOfNumber + "-" + secondPartOfNumber + "%" + "=" + " " + result + "</p>";
+            beforResult.innerHTML = "<p>" + firstPartOfNumber + "-" + secondPartOfNumber + "%" + "=" + "</p>";
+        }
+        if (equalAgain == "C") {
+            newHistory.innerHTML = "<p>" + firstPartOfNumber + "*" + secondPartOfNumber + "%" + "=" + " " + result + "</p>";
+            beforResult.innerHTML = "<p>" + firstPartOfNumber + "*" + secondPartOfNumber + "%" + "=" + "</p>";
+        }
+        if (equalAgain == "D") {
+            newHistory.innerHTML = "<p>" + firstPartOfNumber + "/" + secondPartOfNumber + "%" + "=" + " " + result + "</p>";
+            beforResult.innerHTML = "<p>" + firstPartOfNumber + "/" + secondPartOfNumber + "%" + "=" + "</p>";
+        }
+        memoryDis.appendChild(newHistory);
+        // add delete button
+        let memoryDeleter = document.createElement("button");
+        memoryDeleter.classList.add("memoryDelete");
+        memoryDeleter.innerHTML = "delete";
+        newHistory.appendChild(memoryDeleter);
+
+        memoryDeleter.addEventListener("click", (event) => {
+            const target = event.target;
+            target.parentNode.remove();
+            ShowPWhitLastHistory--;
+            if (ShowPWhitLastHistory == 0) {
+                let gettextOfMemory = document.getElementById("textOfHistory");
+                gettextOfMemory.classList.remove("hide")
+            }
+        })
+    }
+    
     percentageArray1 = [];
     percentageArray2 = [];
     flagNewNumber = true;
