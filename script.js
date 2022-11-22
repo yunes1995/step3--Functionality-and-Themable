@@ -5,9 +5,12 @@ function testfunction() {
     // let fortest = document.getElementsByClassName(".history")
     // fortest.childNodes;
     // console.log(fortest)
-    console.log("equalAgain =" + equalAgain);
+    // console.log("equalAgain =" + equalAgain);
     // console.log("mosavi variable = "+ mosavivariable)
-    console.log("equql flag = " + equalAgainFlage)
+    // console.log("equql flag = " + equalAgainFlage)
+    // newArray.shift();
+    console.log(newArray);
+    // console.log(newArray.join(""))
 }
 /*----------------- 1 - 9 button -------------*/
 let counterfunc = 0;
@@ -20,9 +23,26 @@ let ShowPWhitLastMemory = 0;
 let equalAgain = " ";
 let equalAgainFlage = false;
 // let historyMiniflag = false;
-
+let testvariable = 0;
+let newArray = [];
+let firstEqual = 0;
 function press_button(value) {
+    /*new/*new/*new/*new/*new/*new/*new/*new/*new/*new/*new*/
+    let getLastValue = value;
+    newArray.push(getLastValue);
 
+    // let newArray2 = newArray.shift();
+    // console.log(newArray2);
+    // let resultArray = newArray.join("");
+
+
+    // let getLastValue = value;
+    // getLastValue + value;
+    // testvariable++;
+    // if(testvariable == 2){
+    //     console.log(getLastValue)
+    // }
+    /*new/*new/*new/*new/*new/*new/*new/*new/*new/*new/*new*/
     let displayy = getDisplayValue();
     // console.log("dispay value = " + displayy)
     if (displayy == "0.") {
@@ -102,31 +122,44 @@ getDotBtn.addEventListener("click", () => {
 let mosavivariable = 0;
 
 function mosavi() {
+
+   /* functionlty press equal again*/
+    firstEqual++;
+    console.log(firstEqual)
+    if (firstEqual == 1) {
+        newArray.shift();
+    }
+    let lastNumber = + newArray.join("");
     let natijeh = eval(document.getElementById("for_dis").innerHTML);
     let soal = document.getElementById("for_dis").innerHTML;
     let memoryDis = document.getElementById("historyFuncID");
-    /*new*//*new*//*new*//*new*//*new*//*new*//*new*//*new*//*new*/
 
+    // equal function to add number for press again
+    //plus 
     if (equalAgainFlage == true && equalAgain == "A") {
         let soal = + document.getElementById("for_dis").innerHTML;
-        let soal2 = document.getElementById("showBeforResult").innerText;
-        soal2.split("2 ,1");
-        console.log(soal2);
-        //    let newsoal = soal + soal;
-        //    document.getElementById("for_dis").innerHTML= newsoal;
+        let newsoal = soal + lastNumber;
+        document.getElementById("for_dis").innerHTML = newsoal;
     }
-    // if(equalAgainFlage == true && equalAgain == "B"){
-    //     let soal = + document.getElementById("for_dis").innerHTML;
-    //    let newsoal = soal - soal;
-    //    document.getElementById("for_dis").innerHTML= newsoal;
-    // }
-    // if(equalAgainFlage == true && equalAgain == "C"){
-    //     // console.log("zarb")
-    //     let soal = + document.getElementById("for_dis").innerHTML;
-    //     let newsoal = soal * soal;
-    //     document.getElementById("for_dis").innerHTML= newsoal;
-    // }
-    /*new*//*new*//*new*//*new*//*new*//*new*//*new*//*new*/
+    //mines
+    if (equalAgainFlage == true && equalAgain == "B") {
+        let soal = + document.getElementById("for_dis").innerHTML;
+        let newsoal = soal - lastNumber;
+        document.getElementById("for_dis").innerHTML = newsoal;
+    }
+    //zarb
+    if (equalAgainFlage == true && equalAgain == "C") {
+        let soal = + document.getElementById("for_dis").innerHTML;
+        let newsoal = soal * lastNumber;
+        document.getElementById("for_dis").innerHTML = newsoal;
+    }
+    //division
+    if (equalAgainFlage == true && equalAgain == "D") {
+        let soal = + document.getElementById("for_dis").innerHTML;
+        let newsoal = soal / lastNumber;
+        document.getElementById("for_dis").innerHTML = newsoal;
+    }
+  //////////////////////////////////////////////////////////////
     if (flagNewNumber == true) {
         return
     }
@@ -196,6 +229,9 @@ getBtndivision.addEventListener("click", () => {
     if (flag == false) {
         return;
     } else {
+        /*new*/
+        newArray = [];
+        /*new*/
         press_button(divisionBtn.value);
         flag = false;
         mosavivariable++;
@@ -209,6 +245,9 @@ getBtnMultiplay.addEventListener("click", () => {
     if (flag == false) {
         return;
     } else {
+        /*new*/
+        newArray = [];
+        /*new*/
         press_button(multiplayBtn.value);
         flag = false;
         mosavivariable++;
@@ -222,6 +261,9 @@ getMinesBtn.addEventListener("click", () => {
     if (flag == false) {
         return;
     } else {
+        /*new*/
+        newArray = [];
+        /*new*/
         press_button(minesBtn.value);
         flag = false;
         mosavivariable++;
@@ -235,6 +277,9 @@ getSubBtn.addEventListener("click", () => {
     if (flag == false) {
         return;
     } else {
+        /*new*/
+        newArray = [];
+        /*new*/
         press_button(subBtn.value);
         flag = false;
         mosavivariable++;
@@ -453,7 +498,7 @@ function calsqrt() {
     })
     let beforResult = document.getElementById("showBeforResult");
     // beforResult.innerHTML = "hi";
-    beforResult.innerHTML =  "<p>" + "sqrt" + "(" + x + ")" + "=" + "</p>";
+    beforResult.innerHTML = "<p>" + "sqrt" + "(" + x + ")" + "=" + "</p>";
 }
 /*---------------------------tavan 2--------------*/
 
@@ -543,7 +588,7 @@ function onedivison() {
     let memoryDis = document.getElementById("historyFuncID");
     let newHistory = document.createElement("div");
     newHistory.className = "contetnthistory";
-    newHistory.innerHTML = "<p>" +"1"+ " " +"/" +" " + x + " " +"="+ " " +result+ "</p>";
+    newHistory.innerHTML = "<p>" + "1" + " " + "/" + " " + x + " " + "=" + " " + result + "</p>";
     memoryDis.appendChild(newHistory);
     // add delete button
     let memoryDeleter = document.createElement("button");
@@ -562,7 +607,7 @@ function onedivison() {
 
     })
     let beforResult = document.getElementById("showBeforResult");
-    beforResult.innerHTML = "<p>" +"1"+ " " +"/" +" " + x + " " +"="+ " "+ "</p>";
+    beforResult.innerHTML = "<p>" + "1" + " " + "/" + " " + x + " " + "=" + " " + "</p>";
 }
 /* ---------------------negative number ------------*/
 
