@@ -1,7 +1,9 @@
 
-// function testfunction() {
-
-// }
+function testfunction() {
+    // console.log("first dote = " + firsDot);
+    // console.log("flage = "+ flag);
+    console.log(flag)
+}
 
 let counterfunc = 0;
 let flagNewNumber = false;
@@ -20,9 +22,12 @@ let percentageArray1 = [];
 let percentageArray2 = [];
 let firstAmal = 0;
 /*persentage*/
-
+let flagFirstDot = false;
 /*-------------------------------------- 1 - 9 button ------------------------------------*/
 function press_button(value) {
+    if (! (value == ".")) {
+        flagFirstDot = false;
+    }
     /*persentage*/
     if (firstAmal == 0) {
         let valueNumber = value;
@@ -33,7 +38,7 @@ function press_button(value) {
         percentageArray2.push(valueNumber2);
     }
     /*persentage*/
-
+   
     firstEqual = 0;
     let getLastValue = value;
     newArray.push(getLastValue);
@@ -90,26 +95,30 @@ function getDisplayValue() {
 
 
 /*-------------------------------------dot button----------------------------------------*/
-
+let oneDotePress = 0;
 let getDotBtn = document.getElementById("dotBtn");
 getDotBtn.addEventListener("click", () => {
-
+if(oneDotePress == 0){
     if (flag == false && firsDot == 0) {
         document.getElementById("for_dis").innerText = "0.";
         flag = false
     }
-    if (flag == false && firsDot > 0) {
+    if (flagFirstDot == true) {
+        console.log("one")
+        let dispalyafterDot = document.getElementById("for_dis").innerText;
+        let display2 = dispalyafterDot+".";
+        press_button(display2)
+        flag = false;
         return
     }
-    if (flag == true && firsDot == 0) {
-        return
-    }
-
-    if (flag == true) {
+    if(flag == true) {
+        console.log("two")
         press_button(dotBtn.value);
         flag = false;
         mosavivariable++;
     }
+}
+oneDotePress++;
 });
 /*-------------------------------------dot button--(END)--------------------------------------*/
 
@@ -118,6 +127,7 @@ getDotBtn.addEventListener("click", () => {
 let mosavivariable = 0;
 
 function mosavi() {
+    flagFirstDot = true;
     percentageArray2 = [];
     /* functionlty press equal again*/
     firstEqual++;
@@ -314,6 +324,7 @@ getBtndivision.addEventListener("click", () => {
     if (flag == false) {
         return;
     } else {
+        oneDotePress=0;
         firstAmal++;
         newArray = [];
         press_button(divisionBtn.value);
@@ -329,6 +340,7 @@ getBtnMultiplay.addEventListener("click", () => {
     if (flag == false) {
         return;
     } else {
+        oneDotePress=0;
         firstAmal++;
         newArray = [];
         press_button(multiplayBtn.value);
@@ -344,6 +356,7 @@ getMinesBtn.addEventListener("click", () => {
     if (flag == false) {
         return;
     } else {
+        oneDotePress=0;
         firstAmal++;
         newArray = [];
         press_button(minesBtn.value);
@@ -359,6 +372,7 @@ getSubBtn.addEventListener("click", () => {
     if (flag == false) {
         return;
     } else {
+        oneDotePress=0;
         firstAmal++;
         newArray = [];
         press_button(subBtn.value);
@@ -634,7 +648,7 @@ function calsqrt() {
     ShowPWhitLastHistory++;
     const x = document.getElementById("for_dis").innerHTML;
     let xresult = Math.sqrt(x);
-    document.getElementById("for_dis").innerHTML = xresult;
+    document.getElementById("for_dis").innerHTML = parseFloat(xresult, 2);
     if (x < 0) {
         document.getElementById("for_dis").innerHTML = "Invalid input";
     }
@@ -791,25 +805,35 @@ function negativeNum() {
 
 /* ----------------------------------------------Them--------------------------------------------------*/
 let counter = 0;
+let showThemBtn = 0;
 function changethem() {
-    counter++;
-    let btnchanger = document.getElementById("maincontent");
-    if (counter == 1) {
-        btnchanger.classList.remove("default");
-        btnchanger.classList.add("green");
+    showThemBtn++;
+    if (showThemBtn == 1) {
+        let getChoseThem = document.getElementById("choseThem");
+        let getCustomThem = document.getElementById("customThem");
+        getChoseThem.classList.remove("hide");
+        getCustomThem.classList.remove("hide")
     }
-    if (counter == 2) {
-        btnchanger.classList.remove("green");
-        btnchanger.classList.add("blue");
-    }
-    else if (counter == 3) {
-        btnchanger.classList.remove("blue");
-        btnchanger.classList.add("custom");
-    }
-    else if (counter > 3) {
-        btnchanger.classList.remove("custom");
-        btnchanger.classList.add("default");
-        counter = 0;
+    if (showThemBtn > 1) {
+        counter++;
+        let btnchanger = document.getElementById("maincontent");
+        if (counter == 1) {
+            btnchanger.classList.remove("default");
+            btnchanger.classList.add("green");
+        }
+        if (counter == 2) {
+            btnchanger.classList.remove("green");
+            btnchanger.classList.add("blue");
+        }
+        else if (counter == 3) {
+            btnchanger.classList.remove("blue");
+            btnchanger.classList.add("custom");
+        }
+        else if (counter > 3) {
+            btnchanger.classList.remove("custom");
+            btnchanger.classList.add("default");
+            counter = 0;
+        }
     }
 }
 

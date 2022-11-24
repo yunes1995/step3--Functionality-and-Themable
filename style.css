@@ -141,10 +141,10 @@ body {
 
 /*----------------------------------------- history---------------------------------*/
 
-.history {
+/* .history {
     height: 100%;
     overflow: scroll;
-}
+} */
 
 .history span {
     font-size: 20px;
@@ -262,7 +262,7 @@ body {
 }
 
 .contetnthistory p {
-    margin-left: 40%;
+    margin-left: 24%;
     padding: 25px;
     font-size: 20px;
     font-weight: bold;
@@ -346,7 +346,7 @@ body {
     margin-right: 15px;
     display: block;
     position: relative;
-    left: 94%;
+    left: 92%;
     width: 85px
 }
 
@@ -684,34 +684,55 @@ body {
 /* ------------chose them -----------------*/
 .chosethem {
     position: absolute;
-    background-color: #af9c9c;
-    top: 93%;
-    right: 2%;
-    width: 49px;
-    height: 26px;
+    background-color: #d3d3d3;
+    top: 92%;
+    right: 6%;
+    width: 65px;
+    height: 37px;
     border-radius: 4px;
     font-size: 18px;
+    border: 1px solid silver;
+    padding: 5px;
 }
-
+.chosethem:hover{
+    border: 2px solid rgba(255, 0, 0, 0.788);
+    /* padding: 0 5px;
+    width: 58px;
+    color: rgb(47, 0, 255); */
+    cursor: pointer;
+}
 .claerHistory {
     position: absolute;
     background-color: var(--bgBtn);
-    top: 92%;
-    right: 6%;
+    top: 91%;
+    right: 2%;
     width: 40px;
     height: 37px;
     border-radius: 100%;
     font-size: 29px;
     cursor: pointer;
 }
-
+.claerHistory:hover{
+    border: 1px solid red;
+}
 .choseThemCustom {
-    border: 2px solid black;
-    width: 120px;
-    height: 55px;
-    padding: 5px;
+    border: 1px solid silver;
+    background-color: silver;
+    width: 123px;
+    height: 62px;
+    padding: 8px;
     position: absolute;
-    top: 90%;
-    right: 10%;
-    border-radius: 5px;
+    top: 88%;
+    right: 12%;
+    border-radius: 9px;
+    box-shadow: 1px;
+    box-shadow: 1px 2px 4px currentColor;
+}
+/* new change in design */
+.choseThemCustom:hover{
+    border: 1px solid red;
+    cursor: pointer;
+}
+button:hover{
+    cursor: pointer;
 }

@@ -124,14 +124,15 @@
         </div>
     </div>
     <div>
-        <button class="chosethem" onclick="chosethem()">Them</button>
+        <button class="chosethem hide" id="choseThem" onclick="chosethem()">Them</button>
         <button class="claerHistory" onclick="cleanerHistory()">&#128465;</button>
-        <div class="choseThemCustom">
-            <!-- <p>Custom Them</p> -->
+        <!--custom them-->
+        <div class="choseThemCustom hide" id="customThem">
             <span>Custom Them</span>
             <input type="color" class="color1">
             <input type="color" class="color2">
         </div>
+        <!--custom them-->
     </div>
     <button class="historyMiniSize hide" onclick="historyMini()"><img src="../step3--Functionality-and-Themable/icon/download.png" alt="history-minisize"></button>
     <div class="showMinihistory hide" id="showForMiniHistory">
@@ -141,7 +142,7 @@
             <button class="clearMiniHistory" onclick="clearMiniHistory()">🗑</button></div>
     </div>
     <!--its must delete-->
-    <!-- <button onclick="testfunction()">tests</button> -->
+    <button onclick="testfunction()">tests</button>
     <script src="script.js"></script>
 </body>
 
