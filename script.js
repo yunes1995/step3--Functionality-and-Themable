@@ -750,15 +750,16 @@ function calsqrt() {
     ShowPWhitLastHistory++;
     const x = document.getElementById("for_dis").innerHTML;
     let xresult = Math.sqrt(x);
-    document.getElementById("for_dis").innerHTML = parseFloat(xresult, 2);
+    document.getElementById("for_dis").innerHTML = xresult.toFixed(2);
     if (x < 0) {
         document.getElementById("for_dis").innerHTML = "Invalid input";
+        return;
     }
     /* add to history*/
     let memoryDis = document.getElementById("historyFuncID");
     let newHistory = document.createElement("div");
     newHistory.className = "contetnthistory";
-    newHistory.innerHTML = "<p>" + "sqrt" + " " + "(" + x + ")" + " " + "=" + " " + xresult + "</p>";
+    newHistory.innerHTML = "<p>" + "sqrt" + " " + "(" + x + ")" + " " + "=" + " " + xresult.toFixed(2) + "</p>";
     memoryDis.appendChild(newHistory);
     // add delete button
     let memoryDeleter = document.createElement("button");
