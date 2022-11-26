@@ -141,10 +141,7 @@ body {
 
 /*----------------------------------------- history---------------------------------*/
 
-/* .history {
-    height: 100%;
-    overflow: scroll;
-} */
+
 
 .history span {
     font-size: 20px;
@@ -735,4 +732,11 @@ body {
 }
 button:hover{
     cursor: pointer;
+}
+.history {
+    height: 100%;
+    overflow: scroll;
+}
+.history::-webkit-scrollbar{
+    display: none;
 }
