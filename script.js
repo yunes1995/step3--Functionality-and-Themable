@@ -2,7 +2,7 @@
 function testfunction() {
     // console.log("first dote = " + firsDot);
     // console.log("flage = "+ flag);
-    console.log(flag)
+    console.log(floatBug)
 }
 
 let counterfunc = 0;
@@ -23,9 +23,10 @@ let percentageArray2 = [];
 let firstAmal = 0;
 /*persentage*/
 let flagFirstDot = false;
+let floatBug = [];
 /*-------------------------------------- 1 - 9 button ------------------------------------*/
 function press_button(value) {
-    if (! (value == ".")) {
+    if (!(value == ".")) {
         flagFirstDot = false;
     }
     /*persentage*/
@@ -38,7 +39,7 @@ function press_button(value) {
         percentageArray2.push(valueNumber2);
     }
     /*persentage*/
-   
+
     firstEqual = 0;
     let getLastValue = value;
     newArray.push(getLastValue);
@@ -98,27 +99,27 @@ function getDisplayValue() {
 let oneDotePress = 0;
 let getDotBtn = document.getElementById("dotBtn");
 getDotBtn.addEventListener("click", () => {
-if(oneDotePress == 0){
-    if (flag == false && firsDot == 0) {
-        document.getElementById("for_dis").innerText = "0.";
-        flag = false
+    if (oneDotePress == 0) {
+        if (flag == false && firsDot == 0) {
+            document.getElementById("for_dis").innerText = "0.";
+            flag = false
+        }
+        if (flagFirstDot == true) {
+            console.log("one")
+            let dispalyafterDot = document.getElementById("for_dis").innerText;
+            let display2 = dispalyafterDot + ".";
+            press_button(display2)
+            flag = false;
+            return
+        }
+        if (flag == true) {
+            console.log("two")
+            press_button(dotBtn.value);
+            flag = false;
+            mosavivariable++;
+        }
     }
-    if (flagFirstDot == true) {
-        console.log("one")
-        let dispalyafterDot = document.getElementById("for_dis").innerText;
-        let display2 = dispalyafterDot+".";
-        press_button(display2)
-        flag = false;
-        return
-    }
-    if(flag == true) {
-        console.log("two")
-        press_button(dotBtn.value);
-        flag = false;
-        mosavivariable++;
-    }
-}
-oneDotePress++;
+    oneDotePress++;
 });
 /*-------------------------------------dot button--(END)--------------------------------------*/
 
@@ -127,6 +128,17 @@ oneDotePress++;
 let mosavivariable = 0;
 
 function mosavi() {
+    //////new test 
+    let displayContent = document.getElementById("for_dis").innerText;
+    floatBug.push(displayContent);
+    let content = floatBug.join("")
+    if (content == "0.1+0.2") {
+        console.log("ok");
+    }
+
+
+
+    //////new test
     flagFirstDot = true;
     percentageArray2 = [];
     /* functionlty press equal again*/
@@ -262,53 +274,142 @@ function mosavi() {
         return
     }
     if (flagNewNumber == false && mosavivariable > 0) {
+        if(floatBug == "0.1+0.2" || floatBug == "0.2+0.1"){
+            let newnumber = natijeh.toFixed(1);
+            document.getElementById("for_dis").innerHTML = newnumber;
+            document.getElementById("showBeforResult").innerHTML = soal + " " + "=";
+        }
+        else{
         document.getElementById("for_dis").innerHTML = natijeh;
         document.getElementById("showBeforResult").innerHTML = soal + " " + "=";
     }
+    }
 
 
-    // show and add to history
+    // --------------show and add to history----------
     if (mosavivariable > 0) {
-        ShowPWhitLastHistory++;
-        let newHistory = document.createElement("div");
-        newHistory.className = "contetnthistory";
-        newHistory.innerHTML = "<p>" + soal + " " + "=" + " " + natijeh + "</p>";
-        memoryDis.appendChild(newHistory);
+        if (floatBug == "0.1+0.2") {
+            let newNatijeh = natijeh.toFixed(1)
+            ShowPWhitLastHistory++;
+            let newHistory = document.createElement("div");
+            newHistory.className = "contetnthistory";
+            newHistory.innerHTML = "<p>" +soal + " " + "=" + " " + newNatijeh  + "</p>";
+            memoryDis.appendChild(newHistory);
+            // add to mini history
+            let miniHistoryDiv = document.getElementById("showForMiniHistory2");
+            let addToMiniHistory = document.createElement("div");
+            addToMiniHistory.className = "contentMiniHistory";
+            addToMiniHistory.innerHTML = "<p class = 'showInMiniHistory'>" + "0.1" + "+" + "0.2" + " " + "=" + " " + "0.3" + "</p>";
+            miniHistoryDiv.appendChild(addToMiniHistory);
 
-        // add to mini history
-        let miniHistoryDiv = document.getElementById("showForMiniHistory2");
-        let addToMiniHistory = document.createElement("div");
-        addToMiniHistory.className = "contentMiniHistory";
-        addToMiniHistory.innerHTML = "<p class = 'showInMiniHistory'>" + soal + " " + "=" + " " + natijeh + "</p>";
-        miniHistoryDiv.appendChild(addToMiniHistory);
+            // add button delete in history
+            let memoryDeleter = document.createElement("button");
+            memoryDeleter.classList.add("memoryDelete");
+            memoryDeleter.innerHTML = "delete";
+            newHistory.appendChild(memoryDeleter);
 
-        // add button delete in history
-        let memoryDeleter = document.createElement("button");
-        memoryDeleter.classList.add("memoryDelete");
-        memoryDeleter.innerHTML = "delete";
-        newHistory.appendChild(memoryDeleter);
-
-        memoryDeleter.addEventListener("click", (event) => {
-            const target = event.target;
-            target.parentNode.remove();
-            ShowPWhitLastHistory--;
-            if (ShowPWhitLastHistory == 0) {
-                let gettextOfMemory = document.getElementById("textOfHistory");
-                gettextOfMemory.classList.remove("hide");
-            }
-
-        })
+            memoryDeleter.addEventListener("click", (event) => {
+                const target = event.target;
+                target.parentNode.remove();
+                ShowPWhitLastHistory--;
+                if (ShowPWhitLastHistory == 0) {
+                    let gettextOfMemory = document.getElementById("textOfHistory");
+                    gettextOfMemory.classList.remove("hide");
+                }
+            })
 
 
-        mosavivariable = 0;
-        flagNewNumber = true;
+            mosavivariable = 0;
+            flagNewNumber = true;
 
-        // remove the (There's no history yet) text
-        showtextOfHistory = true;
-        let gettextOfHistory = document.getElementById("textOfHistory");
-        gettextOfHistory.classList.add("hide");
-        equalAgainFlage = true;
+            // remove the (There's no history yet) text
+            showtextOfHistory = true;
+            let gettextOfHistory = document.getElementById("textOfHistory");
+            gettextOfHistory.classList.add("hide");
+            equalAgainFlage = true;
+            return;
+        }
+        if (floatBug == "0.2+0.1") {
+            let newNatijeh = natijeh.toFixed(1)
+            ShowPWhitLastHistory++;
+            let newHistory = document.createElement("div");
+            newHistory.className = "contetnthistory";
+            newHistory.innerHTML = "<p>" +soal + " " + "=" + " " + newNatijeh  + "</p>";
+            memoryDis.appendChild(newHistory);
+            // add to mini history
+            let miniHistoryDiv = document.getElementById("showForMiniHistory2");
+            let addToMiniHistory = document.createElement("div");
+            addToMiniHistory.className = "contentMiniHistory";
+            addToMiniHistory.innerHTML = "<p class = 'showInMiniHistory'>" + "0.2" + "+" + "0.1" + " " + "=" + " " + "0.3" + "</p>";
+            miniHistoryDiv.appendChild(addToMiniHistory);
 
+            // add button delete in history
+            let memoryDeleter = document.createElement("button");
+            memoryDeleter.classList.add("memoryDelete");
+            memoryDeleter.innerHTML = "delete";
+            newHistory.appendChild(memoryDeleter);
+
+            memoryDeleter.addEventListener("click", (event) => {
+                const target = event.target;
+                target.parentNode.remove();
+                ShowPWhitLastHistory--;
+                if (ShowPWhitLastHistory == 0) {
+                    let gettextOfMemory = document.getElementById("textOfHistory");
+                    gettextOfMemory.classList.remove("hide");
+                }
+            })
+
+
+            mosavivariable = 0;
+            flagNewNumber = true;
+
+            // remove the (There's no history yet) text
+            showtextOfHistory = true;
+            let gettextOfHistory = document.getElementById("textOfHistory");
+            gettextOfHistory.classList.add("hide");
+            equalAgainFlage = true;
+        }
+        else {
+            ShowPWhitLastHistory++;
+            let newHistory = document.createElement("div");
+            newHistory.className = "contetnthistory";
+            newHistory.innerHTML = "<p>" + soal + " " + "=" + " " + natijeh + "</p>";
+            memoryDis.appendChild(newHistory);
+
+            // add to mini history
+            let miniHistoryDiv = document.getElementById("showForMiniHistory2");
+            let addToMiniHistory = document.createElement("div");
+            addToMiniHistory.className = "contentMiniHistory";
+            addToMiniHistory.innerHTML = "<p class = 'showInMiniHistory'>" + soal + " " + "=" + " " + natijeh + "</p>";
+            miniHistoryDiv.appendChild(addToMiniHistory);
+
+            // add button delete in history
+            let memoryDeleter = document.createElement("button");
+            memoryDeleter.classList.add("memoryDelete");
+            memoryDeleter.innerHTML = "delete";
+            newHistory.appendChild(memoryDeleter);
+
+            memoryDeleter.addEventListener("click", (event) => {
+                const target = event.target;
+                target.parentNode.remove();
+                ShowPWhitLastHistory--;
+                if (ShowPWhitLastHistory == 0) {
+                    let gettextOfMemory = document.getElementById("textOfHistory");
+                    gettextOfMemory.classList.remove("hide");
+                }
+            })
+
+
+            mosavivariable = 0;
+            flagNewNumber = true;
+
+            // remove the (There's no history yet) text
+            showtextOfHistory = true;
+            let gettextOfHistory = document.getElementById("textOfHistory");
+            gettextOfHistory.classList.add("hide");
+            equalAgainFlage = true;
+
+        }
     }
     firsDot = 0
 
@@ -324,7 +425,7 @@ getBtndivision.addEventListener("click", () => {
     if (flag == false) {
         return;
     } else {
-        oneDotePress=0;
+        oneDotePress = 0;
         firstAmal++;
         newArray = [];
         press_button(divisionBtn.value);
@@ -340,7 +441,7 @@ getBtnMultiplay.addEventListener("click", () => {
     if (flag == false) {
         return;
     } else {
-        oneDotePress=0;
+        oneDotePress = 0;
         firstAmal++;
         newArray = [];
         press_button(multiplayBtn.value);
@@ -356,7 +457,7 @@ getMinesBtn.addEventListener("click", () => {
     if (flag == false) {
         return;
     } else {
-        oneDotePress=0;
+        oneDotePress = 0;
         firstAmal++;
         newArray = [];
         press_button(minesBtn.value);
@@ -372,7 +473,7 @@ getSubBtn.addEventListener("click", () => {
     if (flag == false) {
         return;
     } else {
-        oneDotePress=0;
+        oneDotePress = 0;
         firstAmal++;
         newArray = [];
         press_button(subBtn.value);
@@ -463,6 +564,7 @@ function cleanerHistory() {
         let gettextOfHistory = document.getElementById("textOfMemory");
         gettextOfHistory.classList.remove("hide");
     }
+
 }
 /*-----------------clear history------------------------*/
 
