@@ -2,10 +2,12 @@
 function testfunction() {
     // console.log("first dote = " + firsDot);
     // console.log("flage = "+ flag);
-    console.log(floatBug)
+    // console.log(flag)
+    console.log(flag)
 }
 
 let counterfunc = 0;
+let flag = false;
 let flagNewNumber = false;
 let showtextOfHistory = false;
 let showtextOfMemory = false;
@@ -24,6 +26,7 @@ let firstAmal = 0;
 /*persentage*/
 let flagFirstDot = false;
 let floatBug = [];
+let start = 0;
 /*-------------------------------------- 1 - 9 button ------------------------------------*/
 function press_button(value) {
     if (!(value == ".")) {
@@ -84,9 +87,17 @@ function press_button(value) {
         } else {
             document.getElementById("for_dis").innerHTML += value;
         }
+        if(!(value==0)){
         flag = true;
     }
-    firsDot++;
+    }
+    
+    if(start == 0 && value == 0){
+        return;
+    }else{
+        firsDot++;
+        start++;
+    }
 }
 function getDisplayValue() {
     let display = document.getElementById("for_dis").innerText;
@@ -147,7 +158,8 @@ function mosavi() {
         newArray.shift();
     }
     let lastNumber = + newArray.join("");
-    let natijeh = eval(document.getElementById("for_dis").innerHTML);
+    let firstNatijeh = eval(document.getElementById("for_dis").innerHTML);
+    let natijeh = firstNatijeh.toFixed(2);
     let soal = document.getElementById("for_dis").innerHTML;
     let memoryDis = document.getElementById("historyFuncID");
 
@@ -274,15 +286,15 @@ function mosavi() {
         return
     }
     if (flagNewNumber == false && mosavivariable > 0) {
-        if(floatBug == "0.1+0.2" || floatBug == "0.2+0.1"){
+        if (floatBug == "0.1+0.2" || floatBug == "0.2+0.1") {
             let newnumber = natijeh.toFixed(1);
             document.getElementById("for_dis").innerHTML = newnumber;
             document.getElementById("showBeforResult").innerHTML = soal + " " + "=";
         }
-        else{
-        document.getElementById("for_dis").innerHTML = natijeh;
-        document.getElementById("showBeforResult").innerHTML = soal + " " + "=";
-    }
+        else {
+            document.getElementById("for_dis").innerHTML = natijeh;
+            document.getElementById("showBeforResult").innerHTML = soal + " " + "=";
+        }
     }
 
 
@@ -293,7 +305,7 @@ function mosavi() {
             ShowPWhitLastHistory++;
             let newHistory = document.createElement("div");
             newHistory.className = "contetnthistory";
-            newHistory.innerHTML = "<p>" +soal + " " + "=" + " " + newNatijeh  + "</p>";
+            newHistory.innerHTML = "<p>" + soal + " " + "=" + " " + newNatijeh + "</p>";
             memoryDis.appendChild(newHistory);
             // add to mini history
             let miniHistoryDiv = document.getElementById("showForMiniHistory2");
@@ -334,7 +346,7 @@ function mosavi() {
             ShowPWhitLastHistory++;
             let newHistory = document.createElement("div");
             newHistory.className = "contetnthistory";
-            newHistory.innerHTML = "<p>" +soal + " " + "=" + " " + newNatijeh  + "</p>";
+            newHistory.innerHTML = "<p>" + soal + " " + "=" + " " + newNatijeh + "</p>";
             memoryDis.appendChild(newHistory);
             // add to mini history
             let miniHistoryDiv = document.getElementById("showForMiniHistory2");
@@ -418,7 +430,7 @@ function mosavi() {
 
 
 /*---------------------------------------( + - /  * )----------------------------------------*/
-let flag = false;
+
 
 const getBtndivision = document.getElementById("divisionBtn");
 getBtndivision.addEventListener("click", () => {
@@ -598,6 +610,7 @@ function memoryBTN() {
         let gettextOfMemory = document.getElementById("textOfMemory");
         gettextOfMemory.classList.remove("hide")
     }
+
 }
 /* ---------------part memory and history----------------*/
 
@@ -627,8 +640,9 @@ function historyBTN() {
     }
     if (memoryFlag == false && ShowPWhitLastHistory > 0) {
         let gettextOfMemory = document.getElementById("textOfMemory");
-        gettextOfMemory.classList.add("hide")
+        gettextOfMemory.classList.add("hide");
     }
+
 }
 /* --------------------history Button -------------------*/
 
@@ -1146,8 +1160,10 @@ const MSButtonFunc = () => {
     MCcounter++;
     MCcounterDisable++;
     creatMemory();
-    let gettextOfMemory = document.getElementById("textOfMemory");
-    gettextOfMemory.classList.add("hide");
+    if (memoryFlag == true) {
+        let gettextOfMemory = document.getElementById("textOfMemory");
+        gettextOfMemory.classList.add("hide");
+    }
     showtextOfMemory = true;
 }
 /*------------------------------------------- (Memory)--(END)-------------------------------------------------*/
