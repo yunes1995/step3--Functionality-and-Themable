@@ -1,9 +1,5 @@
 
 function testfunction() {
-    // console.log("first dote = " + firsDot);
-    // console.log("flage = "+ flag);
-    // console.log(flag)
-    console.log(flag)
 }
 
 let counterfunc = 0;
@@ -27,6 +23,7 @@ let firstAmal = 0;
 let flagFirstDot = false;
 let floatBug = [];
 let start = 0;
+let firstNumber = 0 ;
 /*-------------------------------------- 1 - 9 button ------------------------------------*/
 function press_button(value) {
     if (!(value == ".")) {
@@ -41,6 +38,15 @@ function press_button(value) {
         let valueNumber2 = value;
         percentageArray2.push(valueNumber2);
     }
+
+    if(firstNumber == 0 && value == 0){
+        flag = false;
+    }
+    else{
+        flag = true;
+        firstNumber++;
+    }
+    
     /*persentage*/
 
     firstEqual = 0;
@@ -87,9 +93,6 @@ function press_button(value) {
         } else {
             document.getElementById("for_dis").innerHTML += value;
         }
-        if(!(value==0)){
-        flag = true;
-    }
     }
     
     if(start == 0 && value == 0){
@@ -110,11 +113,11 @@ function getDisplayValue() {
 let oneDotePress = 0;
 let getDotBtn = document.getElementById("dotBtn");
 getDotBtn.addEventListener("click", () => {
-    if (oneDotePress == 0) {
-        if (flag == false && firsDot == 0) {
+        if (flag == false && firsDot == 0 && oneDotePress == 0) {
             document.getElementById("for_dis").innerText = "0.";
             flag = false
         }
+        // press first dote after result
         if (flagFirstDot == true) {
             console.log("one")
             let dispalyafterDot = document.getElementById("for_dis").innerText;
@@ -129,7 +132,6 @@ getDotBtn.addEventListener("click", () => {
             flag = false;
             mosavivariable++;
         }
-    }
     oneDotePress++;
 });
 /*-------------------------------------dot button--(END)--------------------------------------*/
@@ -158,8 +160,8 @@ function mosavi() {
         newArray.shift();
     }
     let lastNumber = + newArray.join("");
-    let firstNatijeh = eval(document.getElementById("for_dis").innerHTML);
-    let natijeh = firstNatijeh.toFixed(2);
+    let natijeh = eval(document.getElementById("for_dis").innerHTML);
+    // let natijeh = firstNatijeh.toFixed(2);
     let soal = document.getElementById("for_dis").innerHTML;
     let memoryDis = document.getElementById("historyFuncID");
 
