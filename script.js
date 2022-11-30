@@ -1,5 +1,13 @@
 
 function testfunction() {
+    // console.log(start);
+    // console.log(flag)
+    // let con = document.getElementById("for_dis").innerText;
+    // console.log(con);
+    // let valueeval = eval(con);
+    // console.log(valueeval)
+    // console.log(flagNewNumber);
+    console.log(percentageArray2)
 }
 
 let counterfunc = 0;
@@ -23,9 +31,12 @@ let firstAmal = 0;
 let flagFirstDot = false;
 let floatBug = [];
 let start = 0;
-let firstNumber = 0 ;
+let firstNumber = 0;
+let getSecondNumber = [];
 /*-------------------------------------- 1 - 9 button ------------------------------------*/
 function press_button(value) {
+
+
     if (!(value == ".")) {
         flagFirstDot = false;
     }
@@ -39,15 +50,18 @@ function press_button(value) {
         percentageArray2.push(valueNumber2);
     }
 
-    if(firstNumber == 0 && value == 0){
+    if (firstNumber == 0 && value == 0) {
         flag = false;
     }
-    else{
+    else {
         flag = true;
         firstNumber++;
     }
-    
+
+
     /*persentage*/
+
+
 
     firstEqual = 0;
     let getLastValue = value;
@@ -94,10 +108,11 @@ function press_button(value) {
             document.getElementById("for_dis").innerHTML += value;
         }
     }
-    
-    if(start == 0 && value == 0){
+
+    if (start == 0 && value == 0) {
+      
         return;
-    }else{
+    } else {
         firsDot++;
         start++;
     }
@@ -113,25 +128,26 @@ function getDisplayValue() {
 let oneDotePress = 0;
 let getDotBtn = document.getElementById("dotBtn");
 getDotBtn.addEventListener("click", () => {
-        if (flag == false && firsDot == 0 && oneDotePress == 0) {
-            document.getElementById("for_dis").innerText = "0.";
-            flag = false
-        }
-        // press first dote after result
-        if (flagFirstDot == true) {
-            console.log("one")
-            let dispalyafterDot = document.getElementById("for_dis").innerText;
-            let display2 = dispalyafterDot + ".";
-            press_button(display2)
-            flag = false;
-            return
-        }
-        if (flag == true) {
-            console.log("two")
-            press_button(dotBtn.value);
-            flag = false;
-            mosavivariable++;
-        }
+    if (flag == false && firsDot == 0 && oneDotePress == 0) {
+        document.getElementById("for_dis").innerText = "0.";
+        flag = false;
+        start++;
+    }
+    // press first dote after result
+    if (flagFirstDot == true) {
+        console.log("one")
+        let dispalyafterDot = document.getElementById("for_dis").innerText;
+        let display2 = dispalyafterDot + ".";
+        press_button(display2)
+        flag = false;
+        return
+    }
+    if (flag == true) {
+        console.log("two")
+        press_button(dotBtn.value);
+        flag = false;
+        mosavivariable++;
+    }
     oneDotePress++;
 });
 /*-------------------------------------dot button--(END)--------------------------------------*/
@@ -141,6 +157,11 @@ getDotBtn.addEventListener("click", () => {
 let mosavivariable = 0;
 
 function mosavi() {
+    if (firstAmal > 0) {
+        let valueNumber2 = value;
+        getSecondNumber.push(valueNumber2);
+    }
+
     //////new test 
     let displayContent = document.getElementById("for_dis").innerText;
     floatBug.push(displayContent);
@@ -161,8 +182,10 @@ function mosavi() {
     }
     let lastNumber = + newArray.join("");
     let natijeh = eval(document.getElementById("for_dis").innerHTML);
+    console.log(natijeh)
     // let natijeh = firstNatijeh.toFixed(2);
     let soal = document.getElementById("for_dis").innerHTML;
+    console.log(soal)
     let memoryDis = document.getElementById("historyFuncID");
 
     // equal function to add number for press again
@@ -294,6 +317,7 @@ function mosavi() {
             document.getElementById("showBeforResult").innerHTML = soal + " " + "=";
         }
         else {
+            console.log("im here")
             document.getElementById("for_dis").innerHTML = natijeh;
             document.getElementById("showBeforResult").innerHTML = soal + " " + "=";
         }
@@ -436,6 +460,15 @@ function mosavi() {
 
 const getBtndivision = document.getElementById("divisionBtn");
 getBtndivision.addEventListener("click", () => {
+    /* first zieo*/
+    if (start == 0) {
+        // document.getElementById("for_dis").innerText = "0/";
+        // mosavivariable++;
+        alert("invalid input");
+        return;
+     }
+     /* first zieo*/
+
     if (flag == false) {
         return;
     } else {
@@ -452,6 +485,12 @@ getBtndivision.addEventListener("click", () => {
 
 const getBtnMultiplay = document.getElementById("multiplayBtn");
 getBtnMultiplay.addEventListener("click", () => {
+    /* first zieo*/
+    if (start == 0) {
+        document.getElementById("for_dis").innerText = "0*";
+        mosavivariable++;
+     }
+     /* first zieo*/
     if (flag == false) {
         return;
     } else {
@@ -468,6 +507,12 @@ getBtnMultiplay.addEventListener("click", () => {
 
 const getMinesBtn = document.getElementById("minesBtn");
 getMinesBtn.addEventListener("click", () => {
+    /* first zieo*/
+    if (start == 0) {
+        document.getElementById("for_dis").innerText = "0-";
+        mosavivariable++;
+     }
+     /* first zieo*/
     if (flag == false) {
         return;
     } else {
@@ -484,6 +529,12 @@ getMinesBtn.addEventListener("click", () => {
 
 const getSubBtn = document.getElementById("subBtn");
 getSubBtn.addEventListener("click", () => {
+    /* first zieo*/
+    if (start == 0) {
+       document.getElementById("for_dis").innerText = "0+";
+       mosavivariable++;
+    }
+    /* first zieo*/
     if (flag == false) {
         return;
     } else {
@@ -504,6 +555,8 @@ getSubBtn.addEventListener("click", () => {
 
 document.querySelector(".grid3").addEventListener("click", clear);
 function clear() {
+    start = 0;
+    flag = false;
     firsDot = 0;
     document.getElementById("for_dis").innerHTML = "0";
     document.getElementById("showBeforResult").innerText = " ";
@@ -878,17 +931,21 @@ function powerThree() {
 /*--------------------------------------------------1/x-----------------------------------------------*/
 
 function onedivison() {
+    if(start == 0 ){
+        alert("Cannot divide by zero");
+        return;
+    }
     ShowPWhitLastHistory++;
     let gettextOfMemory = document.getElementById("textOfHistory");
     gettextOfMemory.classList.add("hide");
     const x = document.getElementById("for_dis").innerHTML;
     let result = 1 / x;
-    document.getElementById("for_dis").innerHTML = result;
+    document.getElementById("for_dis").innerHTML = result.toFixed(2);
 
     let memoryDis = document.getElementById("historyFuncID");
     let newHistory = document.createElement("div");
     newHistory.className = "contetnthistory";
-    newHistory.innerHTML = "<p>" + "1" + " " + "/" + " " + x + " " + "=" + " " + result + "</p>";
+    newHistory.innerHTML = "<p>" + "1" + " " + "/" + " " + x + " " + "=" + " " + result.toFixed(2) + "</p>";
     memoryDis.appendChild(newHistory);
     // add delete button
     let memoryDeleter = document.createElement("button");
@@ -1036,10 +1093,10 @@ function creatMemory() {
 
     });
     /*--------------M- button ----------------*/
-    Btn3.addEventListener("click" , (event) => {
+    Btn3.addEventListener("click", (event) => {
         const target = event.target;
         let contentDisplay = + document.getElementById("for_dis").innerText;
-        target.parentNode.querySelector(".newtest").innerHTML =  parseFloat(target.parentNode.querySelector(".newtest").innerHTML) -contentDisplay;
+        target.parentNode.querySelector(".newtest").innerHTML = parseFloat(target.parentNode.querySelector(".newtest").innerHTML) - contentDisplay;
     })
 
     /*-------------MC button------------------*/
@@ -1175,6 +1232,6 @@ const MSButtonFunc = () => {
     showtextOfMemory = true;
 }
 /*------------------------------------------- (Memory)--(END)-------------------------------------------------*/
-function close(){
+function close() {
     clear();
 }
