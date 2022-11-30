@@ -958,22 +958,22 @@ function changethem() {
 
 /* chose them with button ---------*/
 function chosethem() {
-    let x = prompt("which them? 1-green * 2-blue * 3-rainbol ?")
+    let x = prompt("which them?  1-blue * 2-rainbol ?")
     let btnchanger = document.getElementById("maincontent");
-    if (x == 1 || x == "green") {
-        btnchanger.classList.remove("default", "blue", "custom");
-        btnchanger.classList.add("green");
-    }
-    if (x == 2 || x == "blue") {
+    // if (x == 1 || x == "green") {
+    //     btnchanger.classList.remove("default", "blue", "custom");
+    //     btnchanger.classList.add("green");
+    // }
+    if (x == 1 || x == "blue") {
         btnchanger.classList.remove("green", "custom", "default");
         btnchanger.classList.add("blue");
     }
-    else if (x == 3 || x == "raibbol") {
+    else if (x == 2 || x == "raibbol") {
         btnchanger.classList.remove("blue", "green", "default");
         btnchanger.classList.add("custom");
     }
-    else if (x > 3 || x == 0) {
-        alert("Them is not valid");
+    else if (x > 2 || x == 0) {
+        alert("Number is invalid");
     }
     else {
         btnchanger.classList.remove("custom");
@@ -1035,6 +1035,12 @@ function creatMemory() {
         target.parentNode.querySelector(".newtest").innerHTML = contentDisplay + parseFloat(target.parentNode.querySelector(".newtest").innerHTML);
 
     });
+    /*--------------M- button ----------------*/
+    Btn3.addEventListener("click" , (event) => {
+        const target = event.target;
+        let contentDisplay = + document.getElementById("for_dis").innerText;
+        target.parentNode.querySelector(".newtest").innerHTML =  parseFloat(target.parentNode.querySelector(".newtest").innerHTML) -contentDisplay;
+    })
 
     /*-------------MC button------------------*/
     Btn1.addEventListener("click", MCremover = (event) => {
@@ -1169,3 +1175,6 @@ const MSButtonFunc = () => {
     showtextOfMemory = true;
 }
 /*------------------------------------------- (Memory)--(END)-------------------------------------------------*/
+function close(){
+    clear();
+}
