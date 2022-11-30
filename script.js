@@ -7,7 +7,7 @@ function testfunction() {
     // let valueeval = eval(con);
     // console.log(valueeval)
     // console.log(flagNewNumber);
-    console.log(percentageArray2)
+    console.log(secondNumber);
 }
 
 let counterfunc = 0;
@@ -48,6 +48,7 @@ function press_button(value) {
     if (firstAmal > 0) {
         let valueNumber2 = value;
         percentageArray2.push(valueNumber2);
+
     }
 
     if (firstNumber == 0 && value == 0) {
@@ -110,7 +111,7 @@ function press_button(value) {
     }
 
     if (start == 0 && value == 0) {
-      
+
         return;
     } else {
         firsDot++;
@@ -156,11 +157,19 @@ getDotBtn.addEventListener("click", () => {
 /*-------------------------------------mosavi button--------------------------------------*/
 let mosavivariable = 0;
 
+
 function mosavi() {
-    if (firstAmal > 0) {
-        let valueNumber2 = value;
-        getSecondNumber.push(valueNumber2);
+    let secondNumber = percentageArray2.join("");
+    if(secondNumber == "/0"){
+        alert("Cannot divide by zero");
+        document.getElementById("for_dis").innerHTML = "0";
+        return
     }
+    // console.log("second =" +secondNumber)
+    // if (firstAmal > 0) {
+    //     let valueNumber2 = value;
+    //     getSecondNumber.push(valueNumber2);
+    // }
 
     //////new test 
     let displayContent = document.getElementById("for_dis").innerText;
@@ -466,12 +475,13 @@ getBtndivision.addEventListener("click", () => {
         // mosavivariable++;
         alert("invalid input");
         return;
-     }
-     /* first zieo*/
+    }
+    /* first zieo*/
 
     if (flag == false) {
         return;
     } else {
+        percentageArray2 = []
         oneDotePress = 0;
         firstAmal++;
         newArray = [];
@@ -489,8 +499,8 @@ getBtnMultiplay.addEventListener("click", () => {
     if (start == 0) {
         document.getElementById("for_dis").innerText = "0*";
         mosavivariable++;
-     }
-     /* first zieo*/
+    }
+    /* first zieo*/
     if (flag == false) {
         return;
     } else {
@@ -511,8 +521,8 @@ getMinesBtn.addEventListener("click", () => {
     if (start == 0) {
         document.getElementById("for_dis").innerText = "0-";
         mosavivariable++;
-     }
-     /* first zieo*/
+    }
+    /* first zieo*/
     if (flag == false) {
         return;
     } else {
@@ -531,8 +541,8 @@ const getSubBtn = document.getElementById("subBtn");
 getSubBtn.addEventListener("click", () => {
     /* first zieo*/
     if (start == 0) {
-       document.getElementById("for_dis").innerText = "0+";
-       mosavivariable++;
+        document.getElementById("for_dis").innerText = "0+";
+        mosavivariable++;
     }
     /* first zieo*/
     if (flag == false) {
@@ -931,7 +941,7 @@ function powerThree() {
 /*--------------------------------------------------1/x-----------------------------------------------*/
 
 function onedivison() {
-    if(start == 0 ){
+    if (start == 0) {
         alert("Cannot divide by zero");
         return;
     }
