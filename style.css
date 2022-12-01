@@ -243,11 +243,74 @@ body {
     font-size: 32px;
     background-color: initial;
 }
-.clearMiniHistory:hover{
+
+.clearMiniHistory:hover {
     /* background-color: rgba(255, 255, 0, 0.466); */
     border: 5px solid #a36262;
     border-radius: 20px;
 }
+
+/*--------------- memory in mini size ----------*/
+.memoryMinisSize {
+    position: absolute;
+    top: 30%;
+    right: 3%;
+    padding: 8px;
+}
+
+.showMiniMemory {
+    width: 100%;
+    height: 398px;
+    background-color: #62a394f5;
+    z-index: 1;
+    position: absolute;
+    top: 219px;
+    padding: 34px;
+}
+
+.closeBtnMiniMemory {
+    position: absolute;
+    top: 4%;
+    right: 4%;
+}
+
+.clearMiniMemory {
+    position: absolute;
+    top: 84%;
+    right: 2%;
+    width: 18px;
+    width: 40px;
+    height: 56px;
+    font-size: 32px;
+    background-color: initial;
+}
+
+.TitleOfMemory {
+    font-size: 21px;
+    font-family: cursive;
+    text-shadow: 3px 0px 4px saddlebrown;
+    margin: 11px;
+}
+
+.showInMiniMemory {
+    margin-left: 160px !important;
+    border: 1px solid !important;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #7fffd46b;
+    font-size: 28px;
+    margin-bottom: 17px;
+}
+
+.showInMiniMemory button {
+    padding: 5px;
+    margin-left: 16px;
+}
+
+.pInMemory {
+    margin-left: 69px;
+}
+
 /*--------------------------------functionlty history-----------------------------------*/
 .contetnthistory {
     margin-left: 9%;
@@ -429,7 +492,7 @@ body {
 /* ------------------------------------responsive width--------------------------------*/
 
 @media screen and (max-width: 1024px) {
-   
+
     .cal_keyboard {
         height: 100%;
         display: grid;
@@ -464,7 +527,8 @@ body {
     .main {
         grid-template-columns: minmax(53%, auto) minmax(38%, 320px);
     }
-    #showBeforResult{
+
+    #showBeforResult {
         color: #009688;
         font-size: 20px;
         top: 20px;
@@ -475,8 +539,9 @@ body {
         width: 85px;
     }
 }
-@media screen and (max-width : 950px){
-    #showBeforResult{
+
+@media screen and (max-width : 950px) {
+    #showBeforResult {
         color: #009688;
         font-size: 20px;
         top: 20px;
@@ -487,6 +552,7 @@ body {
         width: 85px;
     }
 }
+
 @media screen and (max-width : 500px) {
     .history {
         display: none;
@@ -523,6 +589,10 @@ body {
         display: block !important;
     }
 
+    .memoryMinisSize {
+        display: block !important;
+    }
+
     .display_text {
         font-size: 39px;
         right: 14px;
@@ -542,13 +612,16 @@ body {
         left: 81%;
         width: 85px;
     }
-    
+
 }
+
 @media screen and (min-width : 500px) {
-     .showMinihistory{
+    .showMinihistory {
         display: none;
     }
+
 }
+
 /*------------------------------------responsive height--------------------------------*/
 @media screen and (max-height : 600px) {
     .cal_keyboard {
@@ -691,13 +764,15 @@ body {
     border: 1px solid silver;
     padding: 5px;
 }
-.chosethem:hover{
+
+.chosethem:hover {
     border: 2px solid rgba(255, 0, 0, 0.788);
     /* padding: 0 5px;
     width: 58px;
     color: rgb(47, 0, 255); */
     cursor: pointer;
 }
+
 .claerHistory {
     position: absolute;
     background-color: var(--bgBtn);
@@ -709,9 +784,11 @@ body {
     font-size: 29px;
     cursor: pointer;
 }
-.claerHistory:hover{
+
+.claerHistory:hover {
     border: 1px solid red;
 }
+
 .choseThemCustom {
     border: 1px solid silver;
     background-color: silver;
@@ -725,18 +802,22 @@ body {
     box-shadow: 1px;
     box-shadow: 1px 2px 4px currentColor;
 }
+
 /* new change in design */
-.choseThemCustom:hover{
+.choseThemCustom:hover {
     border: 1px solid red;
     cursor: pointer;
 }
-button:hover{
+
+button:hover {
     cursor: pointer;
 }
+
 .history {
     height: 100%;
     overflow: scroll;
 }
-.history::-webkit-scrollbar{
+
+.history::-webkit-scrollbar {
     display: none;
 }
