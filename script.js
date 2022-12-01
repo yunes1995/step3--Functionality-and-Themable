@@ -729,11 +729,27 @@ function historyBTN() {
 function miniMemory() {
     let getShowMiniMemmory = document.getElementById("showForMiniMemory");
     getShowMiniMemmory.classList.remove("hide");
+    MCButton.setAttribute("disabled", true);
+    MRButton.setAttribute("disabled", true);
+    mPlusBtnId.setAttribute("disabled", true);
+    mMinesBtnId.setAttribute("disabled", true);
+    MSBtnId.setAttribute("disabled", true);
+    
 }
 
 function closeMiniMemory() {
     let getShowMiniMemmory = document.getElementById("showForMiniMemory");
     getShowMiniMemmory.classList.add("hide");
+
+    MCButton.removeAttribute("disabled")
+    // MCButton.setAttribute("disabled", false);
+    MRButton.removeAttribute("disabled");
+    mPlusBtnId.removeAttribute("disabled");
+    mMinesBtnId.removeAttribute("disabled");
+    MSBtnId.removeAttribute("disabled");
+}
+function clearMiniMemory(){
+    showForMiniMemory2.innerHTML = " ";
 }
 
 /*-------------------------------------------History---(END)----------------------------------------*/
@@ -1195,50 +1211,7 @@ function addToMemory() {
     showtextOfMemory = true;
 
     // add to mini memeory
-
-    let getDivMiniMemory = document.getElementById("showForMiniMemory2");
-
-    let creatNewDiv = document.createElement("div");
-    creatNewDiv.className = "showInMiniMemory";
-
-    let pInMiniMemory = document.createElement("p");
-    pInMiniMemory.className = "pInMemory";
-    pInMiniMemory.innerText = natijehForMini;
-
-    let creatBTNForMini1 = document.createElement("button");
-    let creatBTNForMini2 = document.createElement("button");
-    let creatBTNForMini3 = document.createElement("button");
-
-    creatBTNForMini1.innerText = "MC";
-    creatBTNForMini2.innerText = "M+";
-    creatBTNForMini3.innerText = "M-";
-
-    getDivMiniMemory.appendChild(creatNewDiv);
-    creatNewDiv.appendChild(pInMiniMemory)
-    creatNewDiv.appendChild(creatBTNForMini1);
-    creatNewDiv.appendChild(creatBTNForMini2);
-    creatNewDiv.appendChild(creatBTNForMini3);
-    
-    // creatBTNForMini2.addEventListener("click", addToMemoryplus = (event) => {
-    //     const target = event.target;
-    //     let contentDisplay = + document.getElementById("for_dis").innerText;
-    //     target.parentNode.querySelector(".newtest").innerHTML = contentDisplay + parseFloat(target.parentNode.querySelector(".newtest").innerHTML);
-
-    // });
-
-    creatBTNForMini2.addEventListener("click", addToMemoryplus = () => {
-        let contentDisplay = + document.getElementById("for_dis").innerText;
-        let parentContent = + creatBTNForMini2.parentNode.querySelector(".pInMemory").innerHTML;
-        creatBTNForMini2.parentNode.querySelector(".pInMemory").innerHTML = contentDisplay + parentContent;
-    });
-    creatBTNForMini3.addEventListener("click", addToMemoryplus = () => {
-        let contentDisplay = + document.getElementById("for_dis").innerText;
-        let parentContent = + creatBTNForMini2.parentNode.querySelector(".pInMemory").innerHTML;
-        creatBTNForMini2.parentNode.querySelector(".pInMemory").innerHTML = parentContent - contentDisplay ;
-    });
-    creatBTNForMini1.addEventListener("click" , () =>{
-        creatBTNForMini1.parentNode.remove();
-    })
+    addToMiniMemory();
 }
 
 let chosep = 1;
@@ -1312,6 +1285,44 @@ const MSButtonFunc = () => {
         gettextOfMemory.classList.add("hide");
     }
     showtextOfMemory = true;
+    console.log("im here");
+    // add to mini memory 
+    addToMiniMemory();
+}
+
+function addToMiniMemory(){
+    let natijehForMini = for_dis.innerHTML;
+    let getDivMiniMemory = document.getElementById("showForMiniMemory2");
+    let creatNewDiv = document.createElement("div");
+    creatNewDiv.className = "showInMiniMemory";
+    let pInMiniMemory = document.createElement("p");
+    pInMiniMemory.className = "pInMemory";
+    pInMiniMemory.innerText = natijehForMini;
+    let creatBTNForMini1 = document.createElement("button");
+    let creatBTNForMini2 = document.createElement("button");
+    let creatBTNForMini3 = document.createElement("button");
+    creatBTNForMini1.innerText = "MC";
+    creatBTNForMini2.innerText = "M+";
+    creatBTNForMini3.innerText = "M-";
+    getDivMiniMemory.appendChild(creatNewDiv);
+    creatNewDiv.appendChild(pInMiniMemory)
+    creatNewDiv.appendChild(creatBTNForMini1);
+    creatNewDiv.appendChild(creatBTNForMini2);
+    creatNewDiv.appendChild(creatBTNForMini3);
+
+    creatBTNForMini2.addEventListener("click", addToMemoryplus = () => {
+        let contentDisplay = + document.getElementById("for_dis").innerText;
+        let parentContent = + creatBTNForMini2.parentNode.querySelector(".pInMemory").innerHTML;
+        creatBTNForMini2.parentNode.querySelector(".pInMemory").innerHTML = contentDisplay + parentContent;
+    });
+    creatBTNForMini3.addEventListener("click", addToMemoryplus = () => {
+        let contentDisplay = + document.getElementById("for_dis").innerText;
+        let parentContent = + creatBTNForMini2.parentNode.querySelector(".pInMemory").innerHTML;
+        creatBTNForMini2.parentNode.querySelector(".pInMemory").innerHTML = parentContent - contentDisplay ;
+    });
+    creatBTNForMini1.addEventListener("click" , () =>{
+        creatBTNForMini1.parentNode.remove();
+    })
 }
 /*------------------------------------------- (Memory)--(END)-------------------------------------------------*/
 function close() {

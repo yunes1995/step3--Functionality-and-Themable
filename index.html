@@ -77,9 +77,9 @@
         <div class="cal_option" id="calOption">
             <button disabled id="MCButtonId" onclick="clearMemory()">MC</button>
             <button disabled id="MRButtonID" onclick="MRbuttonFunc()">MR</button>
-            <button onclick="addToMemory()">M+</button>
-            <button onclick="Mmines()">M-</button>
-            <button onclick="MSButtonFunc()">MS</button>
+            <button onclick="addToMemory()" id="mPlusBtnId">M+</button>
+            <button onclick="Mmines()" id="mMinesBtnId">M-</button>
+            <button onclick="MSButtonFunc()" id="MSBtnId">MS</button>
         </div>
 
         <!-------------------------------------Keyboard------------------------------------------>
@@ -150,28 +150,19 @@
             <button class="clearMiniHistory" onclick="clearMiniHistory()">🗑</button>
         </div>
     </div>
-    <!-- aaddddddddddddd new futher-->
+    <!-- Mini Memory-->
     <div class="showMiniMemory hide" id="showForMiniMemory">
-        <p class="TitleOfMemory">Memory</p>
+        <p class="TitleOfMemory">Memory :</p>
         <div id="showForMiniMemory2">
-
-            <!-- <div class="showInMiniMemory">
-                <p class="pInMemory"> 10 </p>
-                <button>MC</button>
-                <button>M+</button>
-                <button>M-</button>
-            </div>
-            -->
-
         </div>
         <button class="closeMiniMemory" onclick="closeMiniMemory()"><img class="closeBtnMiniMemory"
                 src="../step3--Functionality-and-Themable/icon/icons8-close-26.png" alt=""></button>
-        <button class="clearMiniMemory" onclick="">🗑</button>
+        <button class="clearMiniMemory" onclick="clearMiniMemory()">🗑</button>
     </div>
-    <!-- aaddddddddddddd new futher-->
+    <!-- Mini Memory-->
     </div>
     <!--its must delete-->
-    <button onclick="testfunction()">tests</button>
+    <!-- <button onclick="testfunction()">tests</button> -->
     <script src="script.js"></script>
 </body>
 

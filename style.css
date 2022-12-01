@@ -273,6 +273,10 @@ body {
     top: 4%;
     right: 4%;
 }
+.closeBtnMiniMemory:hover{
+    background-color: red;
+    padding: 2px;
+}
 
 .clearMiniMemory {
     position: absolute;
@@ -284,7 +288,10 @@ body {
     font-size: 32px;
     background-color: initial;
 }
-
+.clearMiniMemory:hover{
+    border: 1px solid red;
+    border-radius: 20px;
+}
 .TitleOfMemory {
     font-size: 21px;
     font-family: cursive;
@@ -617,6 +624,9 @@ body {
 
 @media screen and (min-width : 500px) {
     .showMinihistory {
+        display: none;
+    }
+    .showMiniMemory{
         display: none;
     }
 
