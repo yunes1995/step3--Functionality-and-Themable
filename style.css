@@ -250,6 +250,12 @@ body {
     border-radius: 20px;
 }
 
+.miniHistoryTitle {
+    font-size: 22px;
+    font-family: cursive;
+    font-weight: bold;
+}
+
 /*--------------- memory in mini size ----------*/
 .memoryMinisSize {
     position: absolute;
@@ -273,7 +279,8 @@ body {
     top: 4%;
     right: 4%;
 }
-.closeBtnMiniMemory:hover{
+
+.closeBtnMiniMemory:hover {
     background-color: red;
     padding: 2px;
 }
@@ -288,10 +295,12 @@ body {
     font-size: 32px;
     background-color: initial;
 }
-.clearMiniMemory:hover{
+
+.clearMiniMemory:hover {
     border: 1px solid red;
     border-radius: 20px;
 }
+
 .TitleOfMemory {
     font-size: 21px;
     font-family: cursive;
@@ -316,6 +325,11 @@ body {
 
 .pInMemory {
     margin-left: 69px;
+}
+
+#showForMiniMemory2 button:hover {
+    background-color: rgb(192, 192, 192);
+    border: 1px solid red;
 }
 
 /*--------------------------------functionlty history-----------------------------------*/
@@ -626,7 +640,8 @@ body {
     .showMinihistory {
         display: none;
     }
-    .showMiniMemory{
+
+    .showMiniMemory {
         display: none;
     }
 

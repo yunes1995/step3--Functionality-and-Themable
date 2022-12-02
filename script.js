@@ -6,7 +6,11 @@ function testfunction() {
     // console.log(con);
     // let valueeval = eval(con);
     // console.log(valueeval)
-    // console.log(flagNewNumber);
+
+
+//    aginAmal.pop();
+//    let x = aginAmal.join("");
+    console.log(flagOneAmalPress);
    
     
 }
@@ -34,17 +38,9 @@ let floatBug = [];
 let start = 0;
 let firstNumber = 0;
 let getSecondNumber = [];
-/* witdh */
-// let flagMinWith = false;
-// let lenghtWidth = getlenghtWitdh();
-// function getlenghtWitdh(){
-//     let x = window.innerWidth;
-//     if(x < 500){
-//         // console.log(" less 500")
-//     }
-//     setInterval(getlenghtWitdh, 5000);
-// }
-/* witdh */
+// 3 + = 6
+let aginAmal = [];
+let flagOneAmalPress = false;
 
 // console.log(lenghtWidth)
 /*-------------------------------------- 1 - 9 button ------------------------------------*/
@@ -76,7 +72,13 @@ function press_button(value) {
 
     /*persentage*/
 
-
+ // newwwwwwwwwwwwwwwwwwwwwwwwww
+ flagOneAmalPress = false;
+// if(!(value == "+") && value == "*" && value == "/" && value == "-"){
+//     aginAmal.push(value)
+// }
+aginAmal.push(value);
+  // newwwwwwwwwwwwwwwwwwwwwwwwww
 
     firstEqual = 0;
     let getLastValue = value;
@@ -184,7 +186,7 @@ function mosavi() {
     //     getSecondNumber.push(valueNumber2);
     // }
 
-    //////new test 
+
     let displayContent = document.getElementById("for_dis").innerText;
     floatBug.push(displayContent);
     let content = floatBug.join("")
@@ -193,6 +195,13 @@ function mosavi() {
     }
 
 
+    //////new test 
+    aginAmal.pop();
+    let firstNumberEnterd = aginAmal.join("");
+    if(flagOneAmalPress == true){
+        for_dis.innerText =  for_dis.innerText + firstNumberEnterd;
+        flagOneAmalPress = false;
+    }
 
     //////new test
     flagFirstDot = true;
@@ -503,6 +512,7 @@ getBtndivision.addEventListener("click", () => {
         mosavivariable++;
         equalAgain = "D";
         equalAgainFlage = false;
+        flagOneAmalPress = true;
     }
 });
 
@@ -525,6 +535,7 @@ getBtnMultiplay.addEventListener("click", () => {
         mosavivariable++;
         equalAgain = "C";
         equalAgainFlage = false;
+        flagOneAmalPress = true;
     }
 });
 
@@ -547,6 +558,7 @@ getMinesBtn.addEventListener("click", () => {
         mosavivariable++;
         equalAgain = "B"
         equalAgainFlage = false;
+        flagOneAmalPress = true;
     }
 })
 
@@ -569,6 +581,9 @@ getSubBtn.addEventListener("click", () => {
         mosavivariable++;
         equalAgain = "A";
         equalAgainFlage = false;
+        // aginAmal.push(for_dis.innerText);
+        // aginAmal.pop();
+        flagOneAmalPress = true;
     }
 })
 /*---------------------------------------( + - /  * )---(END)-------------------------------------*/
