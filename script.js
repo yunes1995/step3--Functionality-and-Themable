@@ -1,7 +1,7 @@
 
 function testfunction() {
-    // console.log(start);
-    // console.log(flag)
+    console.log("MScounter = " + MScounter);
+    console.log( "counetrMemory = " + counetrMemory)
     // let con = document.getElementById("for_dis").innerText;
     // console.log(con);
     // let valueeval = eval(con);
@@ -10,7 +10,7 @@ function testfunction() {
 
 //    aginAmal.pop();
 //    let x = aginAmal.join("");
-    console.log(flagOneAmalPress);
+
    
     
 }
@@ -41,7 +41,7 @@ let getSecondNumber = [];
 // 3 + = 6
 let aginAmal = [];
 let flagOneAmalPress = false;
-
+let whichpForAdd = 0;
 // console.log(lenghtWidth)
 /*-------------------------------------- 1 - 9 button ------------------------------------*/
 function press_button(value) {
@@ -201,6 +201,7 @@ function mosavi() {
     if(flagOneAmalPress == true){
         for_dis.innerText =  for_dis.innerText + firstNumberEnterd;
         flagOneAmalPress = false;
+        flag = true;
     }
 
     //////new test
@@ -1205,21 +1206,23 @@ function addToMemory() {
 
     if (counetrMemory == 0 && MScounter == 0) {
         creatMemory();
+        MScounter++;
+       whichpForAdd++;
     }
-    if (counetrMemory > 0 && MScounter == 0) {
+
+ 
+    if (counetrMemory > 0 && MScounter == 1) {
         let natijeh = + document.getElementById("for_dis").innerText;
         let MplusResult = + document.querySelector("#memoryFuncID p").innerText;
         let sum = natijeh + MplusResult;
         document.querySelector("#memoryFuncID p").innerText = sum;
     }
-    if (counetrMemory > 0 && MScounter > 0) {
 
-        let whichp = document.getElementsByTagName("p");
-        let pcounternew = whichp.length;
-        let lastParagraph = + document.getElementsByTagName("p")[pcounternew - 1].innerText;
+    if ( MScounter > 1) {
+        let lastParagraph = + document.getElementsByTagName("p")[whichpForAdd].innerText;
         let contentInDis = + document.getElementById("for_dis").innerText;
         let lastsum = lastParagraph + contentInDis;
-        document.getElementsByTagName("p")[pcounternew - 1].innerText = lastsum;
+        document.getElementsByTagName("p")[whichpForAdd].innerText = lastsum;
     }
     let gettextOfMemory = document.getElementById("textOfMemory");
     gettextOfMemory.classList.add("hide")
@@ -1227,6 +1230,7 @@ function addToMemory() {
 
     // add to mini memeory
     addToMiniMemory();
+   
 }
 
 let chosep = 1;
@@ -1290,6 +1294,7 @@ function MRbuttonFunc() {
 /*-------------------------MS button---------------------- */
 
 const MSButtonFunc = () => {
+    whichpForAdd++;
     MScounter++;
     chosep++;
     MCcounter++;
@@ -1300,7 +1305,6 @@ const MSButtonFunc = () => {
         gettextOfMemory.classList.add("hide");
     }
     showtextOfMemory = true;
-    console.log("im here");
     // add to mini memory 
     addToMiniMemory();
 }
