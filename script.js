@@ -1236,33 +1236,61 @@ function addToMemory() {
 let chosep = 1;
 
 /*---------------------- M- Button ------------------*/
+// function Mmines() {
+//     if (counetrMemory > 0 && MScounter == 0) {
+//         let natijeh = + document.getElementById("for_dis").innerText;
+//         let MplusResult = + document.querySelector("#memoryFuncID p").innerText;
+//         let sum = MplusResult - natijeh;
+
+//         let onlyfortest = document.getElementsByTagName("p");
+//         let pcounter = onlyfortest.length;
+
+//         if (pcounter <= 2) {
+//             showinP = document.getElementsByTagName("p")[1];
+//             showinP.innerText = sum;
+//         } else if (pcounter > 2) {
+//             let showinPNew = document.getElementsByTagName("p")[pcounter - 1];
+//             showinPNew.innerText = sum;
+//         }
+//     } else if (counetrMemory > 0 && MScounter > 0) {
+//         let whichp = document.getElementsByTagName("p");
+//         let pcounternew = whichp.length;
+//         let lastParagraph = + document.getElementsByTagName("p")[pcounternew - 1].innerText;
+//         let contentInDis = + document.getElementById("for_dis").innerText;
+//         let lastsum = lastParagraph - contentInDis;
+
+//         document.getElementsByTagName("p")[pcounternew - 1].innerText = lastsum;
+
+//     }
+// }
 function Mmines() {
-    if (counetrMemory > 0 && MScounter == 0) {
+    
+    let natijehForMini = + document.getElementById("for_dis").innerText;
+    let getDivInMemory = document.querySelectorAll("#memoryFuncID div");
+    let tedadkol = getDivInMemory.length;
+
+    if (counetrMemory == 0 && MScounter == 0) {
+       return;
+    }
+
+ 
+    if (counetrMemory > 0 && MScounter == 1) {
         let natijeh = + document.getElementById("for_dis").innerText;
         let MplusResult = + document.querySelector("#memoryFuncID p").innerText;
-        let sum = MplusResult - natijeh;
+        let sum =  MplusResult-natijeh;
+        document.querySelector("#memoryFuncID p").innerText = sum;
+        console.log("M1")
+    }
 
-        let onlyfortest = document.getElementsByTagName("p");
-        let pcounter = onlyfortest.length;
-
-        if (pcounter <= 2) {
-            showinP = document.getElementsByTagName("p")[1];
-            showinP.innerText = sum;
-        } else if (pcounter > 2) {
-            let showinPNew = document.getElementsByTagName("p")[pcounter - 1];
-            showinPNew.innerText = sum;
-        }
-    } else if (counetrMemory > 0 && MScounter > 0) {
-        let whichp = document.getElementsByTagName("p");
-        let pcounternew = whichp.length;
-        let lastParagraph = + document.getElementsByTagName("p")[pcounternew - 1].innerText;
+    if ( MScounter > 1) {
+        let lastParagraph = + document.getElementsByTagName("p")[whichpForAdd].innerText;
         let contentInDis = + document.getElementById("for_dis").innerText;
-        let lastsum = lastParagraph - contentInDis;
-
-        document.getElementsByTagName("p")[pcounternew - 1].innerText = lastsum;
-
+        let lastsum = lastParagraph - contentInDis ;
+        document.getElementsByTagName("p")[whichpForAdd].innerText = lastsum;
+        console.log("M2")
     }
 }
+
 /*--------------------- MC Button -----------------*/
 let MCcounter = -1;
 let MCcounterDisable = 0;
