@@ -245,7 +245,6 @@ body {
 }
 
 .clearMiniHistory:hover {
-    /* background-color: rgba(255, 255, 0, 0.466); */
     border: 5px solid #a36262;
     border-radius: 20px;
 }
@@ -717,60 +716,38 @@ body {
 
 .green {
     --bg: rgb(215, 232, 126);
-    /* --semi-buttons: #f7f7f7; */
     --number-buttons: rgb(174, 223, 73);
     --hover-gray: rgb(73, 155, 62);
     --aroundbtn: rgb(125, 200, 63);
     --borderradius: 20px;
     --font-family: 'Uchen', serif;
-    /* --menu-hover: #e3e3e3; */
-    /* --border: rgba(177, 177, 177, 0.644); */
-    /* --red: rgb(236,57,71); */
-    /* --text: #000; */
     font-family: cursive;
 }
 
 .blue {
     --bg: rgb(195, 234, 249);
-    /* --semi-buttons: #f7f7f7; */
     --number-buttons: rgb(127, 211, 240);
     --hover-gray: rgb(0, 103, 185);
     --aroundbtn: rgb(63 175 200);
     --borderradius: 20px 0 20px 0;
     --font: 'Uchen', serif;
-    /* --menu-hover: #e3e3e3; */
-    /* --border: rgba(177, 177, 177, 0.644); */
-    /* --red: rgb(236,57,71); */
-    /* --text: #000; */
-
 }
 
 .blue {
     --bg: rgb(195, 234, 249);
-    /* --semi-buttons: #f7f7f7; */
     --number-buttons: rgb(127, 211, 240);
     --hover-gray: rgb(0, 103, 185);
     --aroundbtn: rgb(63 175 200);
     --borderradius: 20px 0 20px 0;
     --font: 'Uchen', serif;
-    /* --menu-hover: #e3e3e3; */
-    /* --border: rgba(177, 177, 177, 0.644); */
-    /* --red: rgb(236,57,71); */
-    /* --text: #000; */
-
 }
 
 .custom {
     --bg: #32bfb185;
-    /* --semi-buttons: #f7f7f7; */
     --number-buttons: #779b9bab;
     --hover-gray: #955a5ab3;
     --aroundbtn: rgb(65 142 177 / 46%);
     --borderradius: 34px;
-    /* --menu-hover: #e3e3e3; */
-    /* --border: rgba(177, 177, 177, 0.644); */
-    /* --red: rgb(236,57,71); */
-    /* --text: #000; */
     font-family: system-ui;
 }
 
@@ -792,9 +769,6 @@ body {
 
 .chosethem:hover {
     border: 2px solid rgba(255, 0, 0, 0.788);
-    /* padding: 0 5px;
-    width: 58px;
-    color: rgb(47, 0, 255); */
     cursor: pointer;
 }
 
@@ -828,7 +802,6 @@ body {
     box-shadow: 1px 2px 4px currentColor;
 }
 
-/* new change in design */
 .choseThemCustom:hover {
     border: 1px solid red;
     cursor: pointer;

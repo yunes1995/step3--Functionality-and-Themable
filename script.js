@@ -1,20 +1,4 @@
 
-function testfunction() {
-    console.log("MScounter = " + MScounter);
-    console.log( "counetrMemory = " + counetrMemory)
-    // let con = document.getElementById("for_dis").innerText;
-    // console.log(con);
-    // let valueeval = eval(con);
-    // console.log(valueeval)
-
-
-//    aginAmal.pop();
-//    let x = aginAmal.join("");
-
-   
-    
-}
-
 let counterfunc = 0;
 let flag = false;
 let flagNewNumber = false;
@@ -42,7 +26,7 @@ let getSecondNumber = [];
 let aginAmal = [];
 let flagOneAmalPress = false;
 let whichpForAdd = 0;
-// console.log(lenghtWidth)
+
 /*-------------------------------------- 1 - 9 button ------------------------------------*/
 function press_button(value) {
 
@@ -72,13 +56,9 @@ function press_button(value) {
 
     /*persentage*/
 
- // newwwwwwwwwwwwwwwwwwwwwwwwww
- flagOneAmalPress = false;
-// if(!(value == "+") && value == "*" && value == "/" && value == "-"){
-//     aginAmal.push(value)
-// }
-aginAmal.push(value);
-  // newwwwwwwwwwwwwwwwwwwwwwwwww
+
+    flagOneAmalPress = false;
+    aginAmal.push(value);
 
     firstEqual = 0;
     let getLastValue = value;
@@ -151,7 +131,6 @@ getDotBtn.addEventListener("click", () => {
     }
     // press first dote after result
     if (flagFirstDot == true) {
-        console.log("one")
         let dispalyafterDot = document.getElementById("for_dis").innerText;
         let display2 = dispalyafterDot + ".";
         press_button(display2)
@@ -159,7 +138,6 @@ getDotBtn.addEventListener("click", () => {
         return
     }
     if (flag == true) {
-        console.log("two")
         press_button(dotBtn.value);
         flag = false;
         mosavivariable++;
@@ -180,31 +158,18 @@ function mosavi() {
         document.getElementById("for_dis").innerHTML = "0";
         return
     }
-    // console.log("second =" +secondNumber)
-    // if (firstAmal > 0) {
-    //     let valueNumber2 = value;
-    //     getSecondNumber.push(valueNumber2);
-    // }
-
 
     let displayContent = document.getElementById("for_dis").innerText;
     floatBug.push(displayContent);
     let content = floatBug.join("")
-    if (content == "0.1+0.2") {
-        console.log("ok");
-    }
 
-
-    //////new test 
     aginAmal.pop();
     let firstNumberEnterd = aginAmal.join("");
-    if(flagOneAmalPress == true){
-        for_dis.innerText =  for_dis.innerText + firstNumberEnterd;
+    if (flagOneAmalPress == true) {
+        for_dis.innerText = for_dis.innerText + firstNumberEnterd;
         flagOneAmalPress = false;
         flag = true;
     }
-
-    //////new test
     flagFirstDot = true;
     percentageArray2 = [];
     /* functionlty press equal again*/
@@ -214,10 +179,7 @@ function mosavi() {
     }
     let lastNumber = + newArray.join("");
     let natijeh = eval(document.getElementById("for_dis").innerHTML);
-    console.log(natijeh)
-    // let natijeh = firstNatijeh.toFixed(2);
     let soal = document.getElementById("for_dis").innerHTML;
-    console.log(soal)
     let memoryDis = document.getElementById("historyFuncID");
 
     // equal function to add number for press again
@@ -349,7 +311,6 @@ function mosavi() {
             document.getElementById("showBeforResult").innerHTML = soal + " " + "=";
         }
         else {
-            console.log("im here")
             document.getElementById("for_dis").innerHTML = natijeh;
             document.getElementById("showBeforResult").innerHTML = soal + " " + "=";
         }
@@ -494,8 +455,6 @@ const getBtndivision = document.getElementById("divisionBtn");
 getBtndivision.addEventListener("click", () => {
     /* first zieo*/
     if (start == 0) {
-        // document.getElementById("for_dis").innerText = "0/";
-        // mosavivariable++;
         alert("invalid input");
         return;
     }
@@ -582,8 +541,6 @@ getSubBtn.addEventListener("click", () => {
         mosavivariable++;
         equalAgain = "A";
         equalAgainFlage = false;
-        // aginAmal.push(for_dis.innerText);
-        // aginAmal.pop();
         flagOneAmalPress = true;
     }
 })
@@ -750,7 +707,7 @@ function miniMemory() {
     mPlusBtnId.setAttribute("disabled", true);
     mMinesBtnId.setAttribute("disabled", true);
     MSBtnId.setAttribute("disabled", true);
-    
+
 }
 
 function closeMiniMemory() {
@@ -758,13 +715,12 @@ function closeMiniMemory() {
     getShowMiniMemmory.classList.add("hide");
 
     MCButton.removeAttribute("disabled")
-    // MCButton.setAttribute("disabled", false);
     MRButton.removeAttribute("disabled");
     mPlusBtnId.removeAttribute("disabled");
     mMinesBtnId.removeAttribute("disabled");
     MSBtnId.removeAttribute("disabled");
 }
-function clearMiniMemory(){
+function clearMiniMemory() {
     showForMiniMemory2.innerHTML = " ";
 }
 
@@ -913,7 +869,6 @@ function calsqrt() {
         }
     })
     let beforResult = document.getElementById("showBeforResult");
-    // beforResult.innerHTML = "hi";
     beforResult.innerHTML = "<p>" + "sqrt" + "(" + x + ")" + "=" + "</p>";
 }
 /*--------------------------------------------Sqrt root 2 ---(END)-------------------------------------*/
@@ -1084,10 +1039,6 @@ function changethem() {
 function chosethem() {
     let x = prompt("which them?  1-blue * 2-rainbol ?")
     let btnchanger = document.getElementById("maincontent");
-    // if (x == 1 || x == "green") {
-    //     btnchanger.classList.remove("default", "blue", "custom");
-    //     btnchanger.classList.add("green");
-    // }
     if (x == 1 || x == "blue") {
         btnchanger.classList.remove("green", "custom", "default");
         btnchanger.classList.add("blue");
@@ -1184,8 +1135,6 @@ function creatMemory() {
         }
     })
 
-    // Btn3.setAttribute("onclick", "Mmines()");
-
     newDIvInMemory.appendChild(Btn1);
     newDIvInMemory.appendChild(Btn2);
     newDIvInMemory.appendChild(Btn3);
@@ -1207,10 +1156,10 @@ function addToMemory() {
     if (counetrMemory == 0 && MScounter == 0) {
         creatMemory();
         MScounter++;
-       whichpForAdd++;
+        whichpForAdd++;
     }
 
- 
+
     if (counetrMemory > 0 && MScounter == 1) {
         let natijeh = + document.getElementById("for_dis").innerText;
         let MplusResult = + document.querySelector("#memoryFuncID p").innerText;
@@ -1218,7 +1167,7 @@ function addToMemory() {
         document.querySelector("#memoryFuncID p").innerText = sum;
     }
 
-    if ( MScounter > 1) {
+    if (MScounter > 1) {
         let lastParagraph = + document.getElementsByTagName("p")[whichpForAdd].innerText;
         let contentInDis = + document.getElementById("for_dis").innerText;
         let lastsum = lastParagraph + contentInDis;
@@ -1230,64 +1179,35 @@ function addToMemory() {
 
     // add to mini memeory
     addToMiniMemory();
-   
+
 }
 
 let chosep = 1;
 
 /*---------------------- M- Button ------------------*/
-// function Mmines() {
-//     if (counetrMemory > 0 && MScounter == 0) {
-//         let natijeh = + document.getElementById("for_dis").innerText;
-//         let MplusResult = + document.querySelector("#memoryFuncID p").innerText;
-//         let sum = MplusResult - natijeh;
-
-//         let onlyfortest = document.getElementsByTagName("p");
-//         let pcounter = onlyfortest.length;
-
-//         if (pcounter <= 2) {
-//             showinP = document.getElementsByTagName("p")[1];
-//             showinP.innerText = sum;
-//         } else if (pcounter > 2) {
-//             let showinPNew = document.getElementsByTagName("p")[pcounter - 1];
-//             showinPNew.innerText = sum;
-//         }
-//     } else if (counetrMemory > 0 && MScounter > 0) {
-//         let whichp = document.getElementsByTagName("p");
-//         let pcounternew = whichp.length;
-//         let lastParagraph = + document.getElementsByTagName("p")[pcounternew - 1].innerText;
-//         let contentInDis = + document.getElementById("for_dis").innerText;
-//         let lastsum = lastParagraph - contentInDis;
-
-//         document.getElementsByTagName("p")[pcounternew - 1].innerText = lastsum;
-
-//     }
-// }
 function Mmines() {
-    
+
     let natijehForMini = + document.getElementById("for_dis").innerText;
     let getDivInMemory = document.querySelectorAll("#memoryFuncID div");
     let tedadkol = getDivInMemory.length;
 
     if (counetrMemory == 0 && MScounter == 0) {
-       return;
+        return;
     }
 
- 
+
     if (counetrMemory > 0 && MScounter == 1) {
         let natijeh = + document.getElementById("for_dis").innerText;
         let MplusResult = + document.querySelector("#memoryFuncID p").innerText;
-        let sum =  MplusResult-natijeh;
+        let sum = MplusResult - natijeh;
         document.querySelector("#memoryFuncID p").innerText = sum;
-        console.log("M1")
     }
 
-    if ( MScounter > 1) {
+    if (MScounter > 1) {
         let lastParagraph = + document.getElementsByTagName("p")[whichpForAdd].innerText;
         let contentInDis = + document.getElementById("for_dis").innerText;
-        let lastsum = lastParagraph - contentInDis ;
+        let lastsum = lastParagraph - contentInDis;
         document.getElementsByTagName("p")[whichpForAdd].innerText = lastsum;
-        console.log("M2")
     }
 }
 
@@ -1337,7 +1257,7 @@ const MSButtonFunc = () => {
     addToMiniMemory();
 }
 
-function addToMiniMemory(){
+function addToMiniMemory() {
     let natijehForMini = for_dis.innerHTML;
     let getDivMiniMemory = document.getElementById("showForMiniMemory2");
     let creatNewDiv = document.createElement("div");
@@ -1365,9 +1285,9 @@ function addToMiniMemory(){
     creatBTNForMini3.addEventListener("click", addToMemoryplus = () => {
         let contentDisplay = + document.getElementById("for_dis").innerText;
         let parentContent = + creatBTNForMini2.parentNode.querySelector(".pInMemory").innerHTML;
-        creatBTNForMini2.parentNode.querySelector(".pInMemory").innerHTML = parentContent - contentDisplay ;
+        creatBTNForMini2.parentNode.querySelector(".pInMemory").innerHTML = parentContent - contentDisplay;
     });
-    creatBTNForMini1.addEventListener("click" , () =>{
+    creatBTNForMini1.addEventListener("click", () => {
         creatBTNForMini1.parentNode.remove();
     })
 }
